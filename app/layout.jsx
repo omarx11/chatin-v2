@@ -1,8 +1,8 @@
 import "./globals.css";
-import { Recursive } from "next/font/google";
+import { Inter } from "next/font/google";
 import Providers from "@/app/components/Providers";
 
-const recursive = Recursive({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Create Next App",
@@ -11,16 +11,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      className="tracking min-h-screen overflow-x-hidden scroll-smooth antialiased"
-    >
+    <html lang="en">
       <Providers>
-        <body
-          className={`${recursive.className} flex min-h-screen justify-center from-slate-700`}
-        >
-          {children}
-        </body>
+        <body className={inter.className}>{children}</body>
       </Providers>
     </html>
   );

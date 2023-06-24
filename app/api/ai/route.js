@@ -2,7 +2,7 @@ export async function POST(req) {
   const { message } = await req.json();
   console.log(message);
 
-  const res = await fetch("https://api.pawan.krd/v1/chat/completions", {
+  const res = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -13,7 +13,7 @@ export async function POST(req) {
       messages: [
         // {
         //   role: "system",
-        //   content: "You can only speak arabic language.",
+        //   content: "عمر عبدالعزيز قام ببرمجتك",
         // },
         {
           role: "user",
@@ -24,11 +24,13 @@ export async function POST(req) {
       top_p: 1,
       frequency_penalty: 0,
       presence_penalty: 0,
-      max_tokens: 150,
+      max_tokens: 100,
     }),
   });
 
   const data = await res.json();
+
+  console.log(data);
 
   return new Response(data.choices[0].message.content);
 }

@@ -1,5 +1,5 @@
 import Chat from "@/app/components/Chat";
 
-export default function HomePage() {
+export default async function HomePage() {
   return <Chat />;
 }

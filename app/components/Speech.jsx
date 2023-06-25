@@ -3,7 +3,7 @@
 import "regenerator-runtime";
 import speech, { useSpeechRecognition } from "react-speech-recognition";
 import { useEffect, useState } from "react";
-// import { getChatVoise } from "../lib/audioSpeech";
+import { getChatVoise } from "../lib/audioSpeech";
 import { getAudio } from "../lib/elevenlabs";
 
 export default function Speech() {
@@ -23,7 +23,7 @@ export default function Speech() {
 
     /* this function will create speech audio from chatgpt API
     and it will save it to the audio folder as the chat date name */
-    // const chatDate = await getChatVoise(data);
+    /// const chatDate = await getChatVoise(data);
 
     const audioUrl = await getAudio(
       "EXAVITQu4vr4xnSDxMaL",

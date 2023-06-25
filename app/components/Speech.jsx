@@ -3,7 +3,7 @@
 import "regenerator-runtime";
 import speech, { useSpeechRecognition } from "react-speech-recognition";
 import { useEffect, useState } from "react";
-import { getChatVoise } from "../lib/audioSpeech";
+// import { getChatVoise } from "../lib/audioSpeech";
 import { getAudio } from "../lib/elevenlabs";
 
 export default function Speech() {

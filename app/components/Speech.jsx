@@ -4,6 +4,7 @@ import "regenerator-runtime";
 import speech, { useSpeechRecognition } from "react-speech-recognition";
 import { useEffect, useState } from "react";
 import { getChatVoise } from "../lib/audioSpeech";
+import { getAudio } from "../lib/elevenlabs";
 
 export default function Speech() {
   const { listening, transcript } = useSpeechRecognition();
@@ -22,17 +23,23 @@ export default function Speech() {
 
     /* this function will create speech audio from chatgpt API
     and it will save it to the audio folder as the chat date name */
-    const chatDate = await getChatVoise(data);
-    console.log(chatDate);
+    // const chatDate = await getChatVoise(data);
 
-    return { data, chatDate };
+    const audioUrl = await getAudio(
+      "EXAVITQu4vr4xnSDxMaL",
+      "4fd5cfc56fafee830247d61ec38e6a2e",
+      data.substring(0, 5000)
+    );
+    new Audio(audioUrl).play();
+
+    return data;
+    // return { data, chatDate };
   }
 
   useEffect(() => {
     if (!listening && transcript) {
       console.log(transcript);
       getChatMessage(transcript).then((response) => {
-        console.log(response.chatDate);
         // const speechSynthesis = window.speechSynthesis;
         // const utterance = new SpeechSynthesisUtterance(response);
         // utterance.lang = "ar-SA";
@@ -46,13 +53,13 @@ export default function Speech() {
 
   return (
     <>
-      {listening ? <p>go ahed...</p> : <p>Click the button</p>}
+      {listening ? <p>go ahed... ask me</p> : <p>Click the button</p>}
       <button
         className="p-10 cursor-pointer bg-slate-700"
         onClick={() => {
-          // speech.startListening();
+          speech.startListening();
           /* if transcript contins any arabic words run this */
-          speech.startListening({ language: "ar-SA" });
+          // speech.startListening({ language: "ar-SA" });
         }}
       >
         Talk

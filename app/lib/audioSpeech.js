@@ -33,5 +33,4 @@ export async function getChatVoise(text) {
 
   fs.writeFileSync(`./public/audio/chat-${chatDate}.mp3`, ttsResponse.data);
   return chatDate;
-  // return window.URL.createObjectURL(new Blob([data], { type: "audio/mpeg" }));
 }

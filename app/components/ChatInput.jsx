@@ -1,21 +1,17 @@
 "use client";
 
 import { MessagesContext } from "@/app/context/messages";
-import { cn } from "@/app/lib/utils";
 import { useMutation } from "@tanstack/react-query";
-import { CornerDownLeft, Loader2 } from "lucide-react";
 import { nanoid } from "nanoid";
 import { useContext, useRef, useState } from "react";
-import { toast } from "react-hot-toast";
 import TextareaAutosize from "react-textarea-autosize";
 
-const ChatInput = ({ className, ...props }) => {
+const ChatInput = () => {
   const textareaRef = useRef(null);
   const [input, setInput] = useState("");
   const {
     messages,
     addMessage,
-    setspeechMessage,
     removeMessage,
     updateMessage,
     setIsMessageUpdating,
@@ -39,7 +35,6 @@ const ChatInput = ({ className, ...props }) => {
     },
     onMutate(message) {
       setIsLoading(true);
-      setspeechMessage(message.text);
       addMessage(message);
     },
     onSuccess: async (stream) => {
@@ -57,8 +52,6 @@ const ChatInput = ({ className, ...props }) => {
       setIsLoading(false);
       addMessage(responseMessage);
 
-      setIsMessageUpdating(true);
-
       const reader = stream.getReader();
       const decoder = new TextDecoder();
       let done = false;
@@ -71,7 +64,7 @@ const ChatInput = ({ className, ...props }) => {
       }
 
       // clean up
-      setIsMessageUpdating(false);
+      setIsMessageUpdating(true);
       setInput("");
 
       setTimeout(() => {
@@ -79,27 +72,25 @@ const ChatInput = ({ className, ...props }) => {
       }, 10);
     },
     onError: (_, message) => {
-      toast.error("Something went wrong. Please try again.");
       removeMessage(message.id);
       textareaRef.current?.focus();
     },
   });
 
   return (
-    <div {...props} className={cn("border-t border-zinc-300", className)}>
-      <div className="relative mt-4 flex-1 overflow-hidden rounded-lg border-none outline-none">
+    <div className="border-t-2 border-sky-500/30 px-4">
+      <div className="relative my-4 flex-1 overflow-hidden rounded-md border-none outline-none">
         <TextareaAutosize
           ref={textareaRef}
           onKeyDown={(e) => {
             if (e.key === "Enter" && !e.shiftKey) {
               e.preventDefault();
-
               const message = {
                 id: nanoid(),
                 isUserMessage: true,
                 text: input,
               };
-
+              setIsMessageUpdating(false);
               sendMessage(message);
             }
           }}
@@ -109,19 +100,14 @@ const ChatInput = ({ className, ...props }) => {
           autoFocus
           disabled={isLoading}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Write a message..."
-          className="peer disabled:opacity-50 pr-14 resize-none block w-full border-0 bg-zinc-100 py-1.5 text-gray-900 focus:ring-0 text-sm sm:leading-6"
+          placeholder="Tell me hi or somthing..."
+          className="disabled:opacity-50 pr-14 resize-none block w-full border-0 bg-sky-200 py-1.5 text-gray-900 focus:ring-0 text-sm sm:leading-6"
         />
         <div className="absolute inset-y-0 right-0 flex py-1.5 pr-1.5">
-          <kbd className="inline-flex items-center rounded border bg-white border-gray-200 px-1 font-sans text-xs text-gray-400">
-            {isLoading ? <div>Loading...</div> : <div>SEND</div>}
+          <kbd className="inline-flex items-center px-1 text-sm text-black">
+            {isLoading ? <div>Thinking...</div> : <div>SEND</div>}
           </kbd>
         </div>
-
-        <div
-          className="absolute inset-x-0 bottom-0 border-t border-gray-300 peer-focus:border-t-2 peer-focus:border-indigo-600"
-          aria-hidden="true"
-        />
       </div>
     </div>
   );

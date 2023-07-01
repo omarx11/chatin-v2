@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 const defaultValue = [
   {
     id: nanoid(),
-    text: "Hello, how can I help you?",
+    text: "Hi, I'm Bella how can I assist you today?",
     isUserMessage: false,
   },
 ];
@@ -12,7 +12,6 @@ export const MessagesContext = createContext();
 
 export function MessagesProvider({ children }) {
   const [messages, setMessages] = useState(defaultValue);
-  const [speechMessage, setspeechMessage] = useState([]);
   const [isMessageUpdating, setIsMessageUpdating] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -42,7 +41,6 @@ export function MessagesProvider({ children }) {
         isMessageUpdating,
         isLoading,
         addMessage,
-        setspeechMessage,
         removeMessage,
         updateMessage,
         setIsMessageUpdating,

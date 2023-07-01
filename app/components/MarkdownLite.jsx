@@ -36,6 +36,24 @@ const MarkdownLite = ({ text }) => {
     parts.push(text.slice(lastIndex));
   }
 
+  // TODO: add chat sound effict
+  // TODO: change .mp3 to .wav or .ogg
+
+  // const audio = useRef(
+  //   typeof Audio !== "undefined" && new Audio("./audio/msg_popup.mp3")
+  // );
+  // const audio =
+  //   typeof Audio !== "undefined" && new Audio("./audio/msg_popup.mp3");
+  // if (audio) {
+  //   // audio.current?.currentTime = 0.01;
+  //   audio.volume = 0.1;
+  // }
+
+  // function playSound() {
+  //   parts.map(() => audio.play());
+  //   console.log(audio.volume);
+  // }
+
   return (
     <>
       {parts.map((part, i) => (

@@ -1,12 +1,43 @@
 import "./globals.scss";
 import { Recursive } from "next/font/google";
 import Providers from "@/app/components/Providers";
+import config from "./data/config";
 
 const recursive = Recursive({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Chatin App",
-  description: "Chat with Bella",
+  metadataBase: new URL(config.siteUrl),
+  title: config.title,
+  description: config.descriptionFull,
+  keywords: config.keywords,
+  authors: { name: config.author },
+  creator: config.author,
+  icons: {
+    icon: ["/favicon.ico"],
+  },
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
+  openGraph: {
+    title: config.description,
+    description: config.descriptionFull,
+    url: config.siteUrl,
+    siteName: config.title,
+    images: [
+      {
+        url: config.ogImage,
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: config.description,
+    description: config.descriptionFull,
+    images: ["https://test.omar11.sa/og.png"],
+  },
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({ children }) {

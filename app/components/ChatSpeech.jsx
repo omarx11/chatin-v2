@@ -13,7 +13,7 @@ import { getAudio, getSubscriptionInfo } from "../lib/elevenlabs";
 import { nanoid } from "nanoid";
 import { Dropdown } from "@nextui-org/react";
 
-const voiceId = "EXAVITQu4vr4xnSDxMaL"; // Bella
+const voiceId = "AZnzlk1XvdvUeBnXmlld"; // Bella
 
 function Speech() {
   const [selectedLanguage, setSelectedLanguage] = useState("en-US");

@@ -29,8 +29,8 @@ export async function getAudio(voiceId, text) {
       text,
       model_id: "eleven_multilingual_v1",
       voice_settings: {
-        stability: 0.75,
-        similarity_boost: 0.75,
+        stability: 1,
+        similarity_boost: 1,
       },
     },
     {

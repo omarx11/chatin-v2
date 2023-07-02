@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 const defaultValue = [
   {
     id: nanoid(),
-    text: "Hi, I'm Bella how can I assist you today?",
+    text: "Hi, I'm Sachiko-chan how can I assist you today?",
     isUserMessage: false,
   },
 ];

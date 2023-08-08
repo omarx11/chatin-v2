@@ -173,7 +173,7 @@ const ChatSpeech = () => {
       AZnzlk1XvdvUeBnXmlld: "Yumeko",
       EXAVITQu4vr4xnSDxMaL: "Bella nice person",
       g5CIjZEefAph4nQFvHAz: "A Serial Killer?",
-      CYw3kZ02Hs0563khs1Fj: "Elli is enthusiastic",
+      MF3mGyEYCl7XYWbV9V6O: "Elli is enthusiastic",
       jBpfuIE2acCO8z3wKNLl: "Gigi a (Child)",
       jsCqWAovK2LkecY7zXl4: "American girl",
       GBv7mTt0atIp3Br8iCZE: "Bloodthirsty",
@@ -291,7 +291,7 @@ const ChatSpeech = () => {
                 <Dropdown.Item key="g5CIjZEefAph4nQFvHAz">
                   A Serial Killer?
                 </Dropdown.Item>
-                <Dropdown.Item key="CYw3kZ02Hs0563khs1Fj">
+                <Dropdown.Item key="MF3mGyEYCl7XYWbV9V6O">
                   Elli Is Enthusiastic
                 </Dropdown.Item>
                 <Dropdown.Item key="jBpfuIE2acCO8z3wKNLl">

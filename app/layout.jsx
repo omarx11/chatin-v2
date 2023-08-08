@@ -1,7 +1,7 @@
-import "./globals.scss";
+import "./globals.css";
 import { Recursive } from "next/font/google";
 import Providers from "@/app/components/Providers";
-import config from "./data/config";
+import { config } from "./data/config";
 
 const recursive = Recursive({ subsets: ["latin"] });
 
@@ -47,7 +47,7 @@ export default function RootLayout({ children }) {
       className="tracking min-h-screen overflow-x-hidden scroll-smooth antialiased"
     >
       <body
-        className={`${recursive.className} min-h-screen bg-gradient-to-b from-gray-700 via-gray-900 to-black`}
+        className={`${recursive.className} flex flex-col items-center mx-2 min-h-screen bg-[rgb(17,24,39)]`}
       >
         <Providers>{children}</Providers>
       </body>

@@ -4,15 +4,18 @@ import { nanoid } from "nanoid";
 const defaultValue = [
   {
     id: nanoid(),
-    text: "Hi, I'm Sachiko-chan how can I assist you today?",
+    text: "Hi, I'm Yumeko. how can I serve you today?",
     isUserMessage: false,
+    isFirstMessage: true,
   },
 ];
+
 export const MessagesContext = createContext();
 
 export function MessagesProvider({ children }) {
   const [messages, setMessages] = useState(defaultValue);
   const [isMessageUpdating, setIsMessageUpdating] = useState(false);
+  const [chatStatus, setChatStatus] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const addMessage = (message) => {
@@ -39,11 +42,13 @@ export function MessagesProvider({ children }) {
       value={{
         messages,
         isMessageUpdating,
+        chatStatus,
         isLoading,
         addMessage,
         removeMessage,
         updateMessage,
         setIsMessageUpdating,
+        setChatStatus,
         setIsLoading,
       }}
     >

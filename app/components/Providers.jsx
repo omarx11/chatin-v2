@@ -1,9 +1,8 @@
 "use client";
-
 import { MessagesProvider } from "@/app/context/messages";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-const Layout = ({ children }) => {
+const Providers = ({ children }) => {
   const queryClient = new QueryClient();
 
   return (
@@ -13,4 +12,4 @@ const Layout = ({ children }) => {
   );
 };
 
-export default Layout;
+export default Providers;

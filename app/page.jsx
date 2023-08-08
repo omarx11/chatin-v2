@@ -9,19 +9,18 @@ export default async function HomePage() {
   return (
     <>
       <ChatHeader />
-      {/* TODO: Add box shadow */}
-      <main className="flex flex-col h-[36rem] max-w-3xl w-full rounded-lg m-auto bg-gradient-to-r from-sky-700 via-cyan-900 to-sky-700">
-        <div className="relative text-sm">
+      <main className="flex flex-col ring-4 ring-violet-900 shadow-xl shadow-violet-500/50 h-[36rem] max-w-3xl w-full rounded-lg bg-gradient-to-r from-purple-950 via-purple-900 to-purple-950">
+        <div className="relative text-xs">
           <Link
             href="https://github.com/omarx11/chatin-v2"
-            prefetch={false}
-            className="text-gray-400 -top-6 absolute right-0 underline-offset-2 hover:underline"
+            target="_blank"
+            className="text-gray-400 -top-6 absolute right-0 underline-offset-1 hover:underline"
           >
-            source
+            open source
             <Image
               src="/static/icons/github.svg"
-              width={18}
-              height={18}
+              width={16}
+              height={16}
               className="inline-block select-none align-top mx-1"
               alt="github-icon"
             />

@@ -11,9 +11,11 @@ import { getAudio, getSubscriptionInfo } from "../lib/elevenlabs";
 import { nanoid } from "nanoid";
 import { Dropdown } from "@nextui-org/react";
 
-function Speech() {
+const ChatSpeech = () => {
   const [selectedLanguage, setSelectedLanguage] = useState(new Set(["en-US"]));
-  const [selectedVoise, setSelectedVoise] = useState("AZnzlk1XvdvUeBnXmlld");
+  const [selectedVoise, setSelectedVoise] = useState(
+    new Set(["AZnzlk1XvdvUeBnXmlld"])
+  );
   const [voiseName, setVoiseName] = useState("Yumeko");
   const [subscriptionInfo, setSubscriptionInfo] = useState(null);
   const [mutationIsDone, setMutationIsDone] = useState(false);
@@ -32,7 +34,7 @@ function Speech() {
     if (transcript !== "") {
       setChatStatus("loading-audio");
       try {
-        const voiseId = selectedVoise?.currentKey ?? selectedVoise;
+        const voiseId = selectedVoise?.currentKey ?? "AZnzlk1XvdvUeBnXmlld";
         // remove links, domains, extra spaces,
         // symbols, emojis, markdown images.
         const message = messages
@@ -124,7 +126,7 @@ function Speech() {
       if (isMessageUpdating === true) {
         setChatStatus("loading-audio");
         try {
-          const voiseId = selectedVoise?.currentKey ?? selectedVoise;
+          const voiseId = selectedVoise?.currentKey ?? "AZnzlk1XvdvUeBnXmlld";
           // remove links, domains, extra spaces,
           // symbols, emojis, markdown images.
           const message = messages
@@ -166,22 +168,17 @@ function Speech() {
   }, [transcript, listening]);
 
   useEffect(() => {
-    const voiseId = selectedVoise?.currentKey ?? selectedVoise;
-    if (voiseId === "AZnzlk1XvdvUeBnXmlld") {
-      setVoiseName("Yumeko (default)");
-    } else if (voiseId === "EXAVITQu4vr4xnSDxMaL") {
-      setVoiseName("Bella nice person");
-    } else if (voiseId === "g5CIjZEefAph4nQFvHAz") {
-      setVoiseName("A Serial Killer?");
-    } else if (voiseId === "CYw3kZ02Hs0563khs1Fj") {
-      setVoiseName("Elli is enthusiastic");
-    } else if (voiseId === "jBpfuIE2acCO8z3wKNLl") {
-      setVoiseName("Gigi a (Child)");
-    } else if (voiseId === "jsCqWAovK2LkecY7zXl4") {
-      setVoiseName("American girl");
-    } else if (voiseId === "GBv7mTt0atIp3Br8iCZE") {
-      setVoiseName("Bloodthirsty");
-    }
+    const voiseId = selectedVoise?.currentKey ?? "AZnzlk1XvdvUeBnXmlld";
+    const voises = {
+      AZnzlk1XvdvUeBnXmlld: "Yumeko",
+      EXAVITQu4vr4xnSDxMaL: "Bella nice person",
+      g5CIjZEefAph4nQFvHAz: "A Serial Killer?",
+      CYw3kZ02Hs0563khs1Fj: "Elli is enthusiastic",
+      jBpfuIE2acCO8z3wKNLl: "Gigi a (Child)",
+      jsCqWAovK2LkecY7zXl4: "American girl",
+      GBv7mTt0atIp3Br8iCZE: "Bloodthirsty",
+    };
+    setVoiseName(voises[voiseId]);
   }, [selectedVoise]);
 
   const startListening = async (lang) => {
@@ -276,7 +273,6 @@ function Speech() {
               }}
             >
               {voiseName}
-              {/* {selectedVoise?.currentKey ?? selectedVoise} */}
             </Dropdown.Button>
             <Dropdown.Menu
               color="secondary"
@@ -335,6 +331,6 @@ function Speech() {
       </div>
     </div>
   );
-}
+};
 
-export default Speech;
+export default ChatSpeech;

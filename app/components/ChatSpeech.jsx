@@ -135,7 +135,6 @@ function Speech() {
               ""
             )
             .replace(/\s+/g, " ");
-          console.log(message);
           const audioUrl = await getAudio(voiseId, message);
           new Audio(audioUrl).play();
           setChatStatus(null);

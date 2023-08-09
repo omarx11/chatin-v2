@@ -5,9 +5,9 @@ export const linksData = `{
         {
           desc: "this list only provide anime images.",
           links: [
-            "143933.jpg",
-            "926464.jpg",
-            "182967.jpg",
+            "/static/images/143933.jpg",
+            "/static/images/926464.jpg",
+            "/static/images/182967.jpg",
           ],
         },
       ],
@@ -15,14 +15,14 @@ export const linksData = `{
         {
           desc: "this list only provide memes images.",
           links: [
-            "366081.gif",
-            "506960.gif",
-            "549303.gif",
-            "627836.gif",
-            "779212.gif",
-            "858380.gif",
-            "878190.gif",
-            "949520.gif",
+            "/static/images/366081.gif",
+            "/static/images/506960.gif",
+            "/static/images/549303.gif",
+            "/static/images/627836.gif",
+            "/static/images/779212.gif",
+            "/static/images/858380.gif",
+            "/static/images/878190.gif",
+            "/static/images/949520.gif",
           ],
         },
       ],
@@ -30,11 +30,11 @@ export const linksData = `{
         {
           desc: "this list only provide flowers images.",
           links: [
-            "285304.jpg",
-            "343234.jpg",
-            "351092.jpg",
-            "791445.jpg",
-            "836117.jpg",
+            "/static/images/285304.jpg",
+            "/static/images/343234.jpg",
+            "/static/images/351092.jpg",
+            "/static/images/791445.jpg",
+            "/static/images/836117.jpg",
           ],
         },
       ]

@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const MarkdownLite = ({ text }) => {
-  const imageRegex = /\[(.+?)\]\((.*\.(?:png|jpg|gif|webp|svg|jpeg))\)/g;
+  const imageRegex = /\!\[(.+?)\]\((.+?)\)/g;
   const linkRegex = /\[(.+?)\]\((.+?)\)/g;
   const parts = [];
 
@@ -45,7 +45,7 @@ const MarkdownLite = ({ text }) => {
     parts.push(
       <Image
         key={linkUrl}
-        src={`/static/images/${linkUrl}`}
+        src={linkUrl}
         width={512}
         height={512}
         className="my-3 ring-4 ring-violet-400 select-none drag-none"

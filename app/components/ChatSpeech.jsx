@@ -40,10 +40,11 @@ const ChatSpeech = () => {
         const message = messages
           .at(-1)
           .text.substring(0, 1000)
-          .replace(
-            /\[(.+?)\]\((.+?)\)|(?:https?|ftp):\/\/[\n\S]+|[^\p{L}\p{N}\p{P}\p{Z}{\^\$}]|[*|~|(|)]/gu,
-            ""
-          )
+          .replace(/(?:https?|ftp):\/\/[\n\S]+/g, "")
+          .replace(/[^\p{L}\p{N}\p{P}\p{Z}{\^\$}]/gu, "")
+          .replace(/\[(.+?)\]\((.+?)\)/g, "")
+          .replace(/\!\[(.+?)\]\((.+?)\)/g, "")
+          .replace(/[*|~|(|)]/g, "")
           .replace(/\s+/g, " ");
         const audioUrl = await getAudio(voiseId, message);
         new Audio(audioUrl).play();
@@ -132,10 +133,11 @@ const ChatSpeech = () => {
           const message = messages
             .at(-1)
             .text.substring(0, 1000)
-            .replace(
-              /\[(.+?)\]\((.+?)\)|(?:https?|ftp):\/\/[\n\S]+|[^\p{L}\p{N}\p{P}\p{Z}{\^\$}]|[*|~|(|)]/gu,
-              ""
-            )
+            .replace(/(?:https?|ftp):\/\/[\n\S]+/g, "")
+            .replace(/[^\p{L}\p{N}\p{P}\p{Z}{\^\$}]/gu, "")
+            .replace(/\[(.+?)\]\((.+?)\)/g, "")
+            .replace(/\!\[(.+?)\]\((.+?)\)/g, "")
+            .replace(/[*|~|(|)]/g, "")
             .replace(/\s+/g, " ");
           const audioUrl = await getAudio(voiseId, message);
           new Audio(audioUrl).play();

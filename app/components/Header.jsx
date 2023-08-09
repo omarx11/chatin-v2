@@ -1,4 +1,4 @@
-export default function ChatHeader() {
+export default function Header() {
   return (
     <header className="md:pt-24 pt-12 mb-6 text-center">
       <h1 className="text-4xl font-bold">

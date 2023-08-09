@@ -1,6 +1,6 @@
 import ChatInput from "./components/ChatInput";
 import ChatMessages from "./components/ChatMessages";
-import ChatHeader from "./components/ChatHeader";
+import Header from "./components/Header";
 import ChatSpeech from "./components/ChatSpeech";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,7 +8,7 @@ import Image from "next/image";
 export default async function HomePage() {
   return (
     <>
-      <ChatHeader />
+      <Header />
       <main className="flex flex-col ring-4 ring-violet-900 shadow-xl shadow-violet-500/50 h-[36rem] max-w-3xl w-full rounded-lg bg-gradient-to-r from-purple-950 via-purple-900 to-purple-950">
         <div className="relative text-xs">
           <Link

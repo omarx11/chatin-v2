@@ -200,7 +200,7 @@ const ChatSpeech = () => {
             className="inline-flex flex-row gap-0.5 focus:outline-none focus:ring-4 focus:ring-blue-600 hover:bg-green-700/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-green-700 border-none rounded-md cursor-pointer text-sm px-2 py-2 bg-green-700"
             onClick={(e) => {
               e.preventDefault();
-              startListening(selectedLanguage?.currentKey ?? selectedLanguage);
+              startListening(selectedLanguage?.currentKey ?? "en-US");
             }}
             disabled={listening}
           >
@@ -241,7 +241,7 @@ const ChatSpeech = () => {
                 marginLeft: "$4",
               }}
             >
-              {selectedLanguage?.currentKey ?? selectedLanguage}
+              {selectedLanguage?.currentKey ?? "en-US"}
             </Dropdown.Button>
             <Dropdown.Menu
               color="secondary"

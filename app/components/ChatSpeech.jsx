@@ -193,7 +193,7 @@ const ChatSpeech = () => {
   };
 
   return (
-    <div className="w-full max-w-3xl p-2 shadow-md shadow-violet-500/50 rounded-lg my-8 bg-violet-950">
+    <div className="w-full max-w-3xl ring-4 ring-violet-900/40 p-2 shadow-md shadow-violet-500/50 rounded-lg my-8 bg-violet-950">
       <div className="flex flex-row flex-wrap justify-between">
         <div className="flex flex-row flex-wrap items-center gap-2">
           <button

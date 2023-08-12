@@ -20,7 +20,7 @@ const ChatMessages = () => {
   }, [isAudioStart]);
 
   return (
-    <div className="flex flex-col-reverse rounded-lg gap-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch md:px-2 px-0 py-3 flex-1">
+    <div className="flex flex-col-reverse rounded-lg gap-3 overflow-y-auto md:px-2 px-0 py-3 flex-1">
       <div className="flex-1 flex-grow" />
       {inverseMessages.map((message) => {
         return (

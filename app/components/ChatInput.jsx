@@ -1,5 +1,5 @@
 "use client";
-import { MessagesContext } from "@/app/context/messages";
+import { StatementContext } from "@/app/context/statement";
 import { useMutation } from "@tanstack/react-query";
 import { nanoid } from "nanoid";
 import { useContext, useRef, useState } from "react";
@@ -18,7 +18,9 @@ const ChatInput = () => {
     setIsLoading,
     chatStatus,
     setChatStatus,
-  } = useContext(MessagesContext);
+    aiVoiseId,
+    aiVoiseName,
+  } = useContext(StatementContext);
 
   const { mutate: sendMessage } = useMutation({
     mutationKey: ["sendMessage"],
@@ -48,6 +50,8 @@ const ChatInput = () => {
         id,
         isUserMessage: false,
         text: "",
+        ai_voise_id: aiVoiseId,
+        ai_voise_name: aiVoiseName,
       };
 
       // add new message to state
@@ -81,7 +85,7 @@ const ChatInput = () => {
   });
 
   return (
-    <div className="px-4">
+    <div className="px-3">
       <div className="relative my-4 flex-1 overflow-hidden rounded-md border-none outline-none">
         <TextareaAutosize
           ref={textareaRef}
@@ -103,12 +107,12 @@ const ChatInput = () => {
           disabled={isLoading}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Tell me hi or something..."
-          className="disabled:opacity-50 font-semibold focus:shadow-inner focus:shadow-neutral-500 placeholder:italic caret-violet-500 pr-14 resize-none block w-full bg-gray-200 py-1.5 text-gray-900 text-sm sm:leading-6"
+          className="block w-full resize-none bg-neutral-200 py-1.5 pr-24 text-sm font-semibold text-neutral-900 caret-violet-500 placeholder:italic focus:shadow-inner focus:shadow-neutral-500 disabled:opacity-50 sm:leading-6"
         />
         <div className="absolute inset-y-0 right-0 flex py-1.5 pr-1">
           <kbd className="inline-flex select-none items-center px-1 text-sm text-black">
             {chatStatus ? (
-              <span className="flex items-center px-1 rounded-sm gap-1">
+              <span className="flex items-center gap-1 rounded-sm px-1">
                 {chatStatus}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -129,7 +133,7 @@ const ChatInput = () => {
                 </svg>
               </span>
             ) : (
-              <span className="px-1 rounded-sm bg-gray-200">STATUS</span>
+              <span className="rounded-sm bg-neutral-200 px-1">STATUS</span>
             )}
           </kbd>
         </div>

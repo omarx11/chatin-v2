@@ -5,6 +5,7 @@
 /old-c.omar11.sa
 /.pnp
 .pnp.js
+/files-i-dont-need
 
 # testing
 /coverage

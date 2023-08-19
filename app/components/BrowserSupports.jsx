@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import { useSpeechRecognition } from "react-speech-recognition";
 
-function BrowserSupports() {
+const BrowserSupports = () => {
   const {
     transcript,
     listening,
@@ -21,7 +21,7 @@ function BrowserSupports() {
   return (
     <code className="whitespace-normal">
       {!listening ? (
-        <span className="text-gray-300 italic">
+        <span className="italic text-neutral-300">
           Go ahed.. hit the Start button and ask Anything!
         </span>
       ) : transcript === "" ? (
@@ -35,11 +35,11 @@ function BrowserSupports() {
       )}
     </code>
   );
-}
+};
 
 export default dynamic(() => Promise.resolve(BrowserSupports), {
   loading: () => (
-    <span className="text-gray-300 italic">
+    <span className="italic text-neutral-300">
       Go ahed.. hit the Start button and ask Anything!
     </span>
   ),

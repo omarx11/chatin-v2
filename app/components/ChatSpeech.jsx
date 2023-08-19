@@ -2,20 +2,23 @@
 import "regenerator-runtime";
 import { useEffect, useState, useContext } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { MessagesContext } from "@/app/context/messages";
+import { StatementContext } from "@/app/context/statement";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 import BrowserSupports from "./BrowserSupports";
-import { getAudio, getSubscriptionInfo } from "../lib/elevenlabs";
+import { getSubscriptionInfo } from "../lib/elevenlabs";
 import { nanoid } from "nanoid";
 import { Dropdown } from "@nextui-org/react";
 
 const ChatSpeech = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState(new Set(["en-US"]));
-  const [selectedVoise, setSelectedVoise] = useState(
-    new Set(["AZnzlk1XvdvUeBnXmlld"])
+  const defaultLang = "en-US";
+  const defaultVoise = "AZnzlk1XvdvUeBnXmlld";
+
+  const [selectedLanguage, setSelectedLanguage] = useState(
+    new Set([defaultLang]),
   );
+  const [selectedVoise, setSelectedVoise] = useState(new Set([defaultVoise]));
   const [voiseName, setVoiseName] = useState("Yumeko");
   const [subscriptionInfo, setSubscriptionInfo] = useState(null);
   const [mutationIsDone, setMutationIsDone] = useState(false);
@@ -28,13 +31,18 @@ const ChatSpeech = () => {
     isMessageUpdating,
     setChatStatus,
     setIsLoading,
-  } = useContext(MessagesContext);
+    isAudioMuted,
+    aiVoiseId,
+    aiVoiseName,
+    setAiVoiseId,
+    setAiVoiseName,
+  } = useContext(StatementContext);
 
   async function doAudio() {
-    if (transcript !== "") {
+    if (transcript !== "" && !isAudioMuted) {
       setChatStatus("loading-audio");
       try {
-        const voiseId = selectedVoise?.currentKey ?? "AZnzlk1XvdvUeBnXmlld";
+        const voiseId = selectedVoise?.currentKey ?? defaultVoise;
         // remove links, domains, extra spaces,
         // symbols, emojis, markdown images.
         const message = messages
@@ -46,8 +54,20 @@ const ChatSpeech = () => {
           .replace(/\!\[(.+?)\]\((.+?)\)/g, "")
           .replace(/[*|~|(|)]/g, "")
           .replace(/\s+/g, " ");
-        const audioUrl = await getAudio(voiseId, message);
+
+        const res = await fetch("/api/elevenlabs", {
+          method: "POST",
+          body: JSON.stringify({
+            data: {
+              voiseId,
+              message,
+            },
+          }),
+        });
+        const blob = await res.blob();
+        const audioUrl = URL.createObjectURL(blob);
         new Audio(audioUrl).play();
+
         setChatStatus(null);
         setSubscriptionInfo(await getSubscriptionInfo());
       } catch {
@@ -86,6 +106,8 @@ const ChatSpeech = () => {
         id,
         isUserMessage: false,
         text: "",
+        ai_voise_id: aiVoiseId,
+        ai_voise_name: aiVoiseName,
       };
 
       // add new message to state
@@ -111,11 +133,29 @@ const ChatSpeech = () => {
     },
   });
 
-  // this for the ChatSpeech
+  // start audio after transcript mutation is done.
+  // save AI and user chat to localStorage and database.
   useEffect(() => {
     (async () => {
       if (mutationIsDone === true) {
         await doAudio();
+
+        if (messages.length > 1)
+          setTimeout(
+            () =>
+              typeof window !== "undefined" &&
+              localStorage.setItem("chat", JSON.stringify(messages)),
+            200,
+          );
+
+        fetch("/api/supabase", {
+          method: "POST",
+          body: JSON.stringify({
+            data: {
+              messages,
+            },
+          }),
+        });
       }
       setMutationIsDone(false);
     })();
@@ -124,10 +164,10 @@ const ChatSpeech = () => {
   // this for the ChatInput
   useEffect(() => {
     (async () => {
-      if (isMessageUpdating === true) {
+      if (isMessageUpdating === true && !isAudioMuted) {
         setChatStatus("loading-audio");
         try {
-          const voiseId = selectedVoise?.currentKey ?? "AZnzlk1XvdvUeBnXmlld";
+          const voiseId = selectedVoise?.currentKey ?? defaultVoise;
           // remove links, domains, extra spaces,
           // symbols, emojis, markdown images.
           const message = messages
@@ -139,8 +179,20 @@ const ChatSpeech = () => {
             .replace(/\!\[(.+?)\]\((.+?)\)/g, "")
             .replace(/[*|~|(|)]/g, "")
             .replace(/\s+/g, " ");
-          const audioUrl = await getAudio(voiseId, message);
+
+          const res = await fetch("/api/elevenlabs", {
+            method: "POST",
+            body: JSON.stringify({
+              data: {
+                voiseId,
+                message,
+              },
+            }),
+          });
+          const blob = await res.blob();
+          const audioUrl = URL.createObjectURL(blob);
           new Audio(audioUrl).play();
+
           setChatStatus(null);
           setSubscriptionInfo(await getSubscriptionInfo());
         } catch {
@@ -170,7 +222,7 @@ const ChatSpeech = () => {
   }, [transcript, listening]);
 
   useEffect(() => {
-    const voiseId = selectedVoise?.currentKey ?? "AZnzlk1XvdvUeBnXmlld";
+    const voiseId = selectedVoise?.currentKey ?? defaultVoise;
     const voises = {
       AZnzlk1XvdvUeBnXmlld: "Yumeko",
       EXAVITQu4vr4xnSDxMaL: "Bella nice person",
@@ -181,6 +233,9 @@ const ChatSpeech = () => {
       GBv7mTt0atIp3Br8iCZE: "Bloodthirsty",
     };
     setVoiseName(voises[voiseId]);
+
+    setAiVoiseId(voiseId);
+    setAiVoiseName(voises[voiseId]);
   }, [selectedVoise]);
 
   const startListening = async (lang) => {
@@ -193,14 +248,14 @@ const ChatSpeech = () => {
   };
 
   return (
-    <div className="w-full max-w-3xl ring-4 ring-violet-900/40 p-2 shadow-md shadow-violet-500/50 rounded-lg my-8 bg-violet-950">
-      <div className="flex flex-row flex-wrap justify-between">
+    <div className="mb-4 mt-4 rounded-lg bg-violet-950 p-2 shadow-md shadow-violet-500/50 ring-4 ring-violet-900/40 sm:mt-8">
+      <div className="flex flex-row flex-wrap justify-center sm:justify-between">
         <div className="flex flex-row flex-wrap items-center gap-2">
           <button
-            className="inline-flex flex-row gap-0.5 focus:outline-none focus:ring-4 focus:ring-blue-600 hover:bg-green-700/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-green-700 border-none rounded-md cursor-pointer text-sm px-2 py-2 bg-green-700"
+            className="hidden cursor-pointer flex-row gap-0.5 rounded-md border-none bg-green-700 px-2 py-2 text-sm hover:bg-green-700/50 focus:outline-none focus:ring-4 focus:ring-blue-600 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-green-700 sm:inline-flex"
             onClick={(e) => {
               e.preventDefault();
-              startListening(selectedLanguage?.currentKey ?? "en-US");
+              startListening(selectedLanguage?.currentKey ?? defaultLang);
             }}
             disabled={listening}
           >
@@ -215,7 +270,7 @@ const ChatSpeech = () => {
             Start
           </button>
           <button
-            className="inline-flex flex-row gap-0.5 focus:outline-none focus:ring-4 focus:ring-blue-600 hover:bg-red-700/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-red-700 border-none rounded-md cursor-pointer text-sm px-2 py-2 bg-red-700"
+            className="hidden cursor-pointer flex-row gap-0.5 rounded-md border-none bg-red-700 px-2 py-2 text-sm hover:bg-red-700/50 focus:outline-none focus:ring-4 focus:ring-blue-600 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-red-700 sm:inline-flex"
             onClick={stopListening}
             disabled={!listening}
           >
@@ -241,7 +296,7 @@ const ChatSpeech = () => {
                 marginLeft: "$4",
               }}
             >
-              {selectedLanguage?.currentKey ?? "en-US"}
+              {selectedLanguage?.currentKey ?? defaultLang}
             </Dropdown.Button>
             <Dropdown.Menu
               color="secondary"
@@ -309,15 +364,15 @@ const ChatSpeech = () => {
             </Dropdown.Menu>
           </Dropdown>
         </div>
-        <span className="text-gray-300 text-right">
+        <span className="hidden text-right text-neutral-300 sm:block">
           Transcript ({transcript.length}/1000)
         </span>
       </div>
 
-      <pre className="border-4 min-h-[48px] border-dashed border-violet-400 bg-violet-800 rounded-sm mt-3 p-2">
+      <pre className="mt-3 hidden min-h-[48px] rounded-sm border-4 border-dashed border-violet-400 bg-violet-800 p-2 sm:block">
         <BrowserSupports />
       </pre>
-      <div className="flex justify-end text-xs pt-1 text-gray-400">
+      <div className="hidden justify-end pt-1 text-xs text-neutral-400 sm:flex">
         {subscriptionInfo ? (
           <p>
             Total quota remaining:{" "}

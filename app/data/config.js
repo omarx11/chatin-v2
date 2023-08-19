@@ -1,10 +1,10 @@
-export const config = {
+export const meta = {
   author: "Omar Abdulaziz",
   siteUrl: "https://chat.omar11.sa",
-  title: "Chatin App",
-  description: "Chatin Application v2",
+  title: "Chatin",
+  description: "Chatin Application",
   descriptionFull:
-    "a project where you can talk to ChatGPT with your voice and it will respond back to you with speech recognition.",
+    "Talk to Yumeko (anime girl) with your voice, And she will respond back to you with speech recognition. (No sign-in required!)",
   keywords: [
     "Chitin",
     "Nextjs",

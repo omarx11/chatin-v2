@@ -1,11 +1,12 @@
 "use client";
-import { MessagesContext } from "@/app/context/messages";
+import { StatementContext } from "@/app/context/statement";
 import { cn } from "@/app/lib/utils";
 import { useContext, useEffect, useState } from "react";
 import MarkdownLite from "./MarkdownLite";
+import dynamic from "next/dynamic";
 
 const ChatMessages = () => {
-  const { messages } = useContext(MessagesContext);
+  const { messages, isAudioMuted } = useContext(StatementContext);
   const [isAudioStart, setIsAudioStart] = useState(false);
   const inverseMessages = [...messages].reverse();
 
@@ -13,14 +14,17 @@ const ChatMessages = () => {
     const audio = document.getElementById("identify");
     if (!isAudioStart) {
       audio.pause();
-      // audio.currentTime = 0;
-    } else {
+    } else if (!isAudioMuted) {
       audio.play();
     }
+    audio.onended = () => {
+      setIsAudioStart(false);
+      audio.currentTime = 0;
+    };
   }, [isAudioStart]);
 
   return (
-    <div className="flex flex-col-reverse rounded-lg gap-3 overflow-y-auto md:px-2 px-0 py-3 flex-1">
+    <div className="fade-in flex flex-1 flex-col-reverse gap-3 overflow-y-auto rounded-lg px-0 py-3 md:px-2">
       <div className="flex-1 flex-grow" />
       {inverseMessages.map((message) => {
         return (
@@ -32,23 +36,23 @@ const ChatMessages = () => {
             >
               <div
                 className={cn(
-                  "flex flex-col space-y-2 text-sm font-medium max-w-md mx-2 overflow-x-hidden",
+                  "mx-2 flex max-w-md flex-col space-y-2 overflow-x-hidden text-sm font-medium",
                   {
                     "order-1 items-end": message.isUserMessage,
                     "order-2 items-start": !message.isUserMessage,
-                  }
+                  },
                 )}
               >
                 <p
-                  className={cn("md:px-4 px-2 py-2 rounded-lg", {
+                  className={cn("rounded-lg px-2 py-2 md:px-4", {
                     "bg-cyan-600 text-white": message.isUserMessage,
-                    "bg-gray-200 text-gray-900": !message.isUserMessage,
-                    "flex md:pl-2 gap-2 items-center": message.isFirstMessage,
+                    "bg-neutral-200 text-neutral-900": !message.isUserMessage,
+                    "flex items-center gap-2 md:pl-2": message.isFirstMessage,
                   })}
                 >
                   {message.isFirstMessage && (
                     <button
-                      className="hover:bg-gray-400 p-1 rounded-full bg-gray-300"
+                      className="rounded-full bg-neutral-300 p-1 hover:bg-neutral-400"
                       onClick={(e) => {
                         e.preventDefault();
                         isAudioStart
@@ -98,4 +102,7 @@ const ChatMessages = () => {
   );
 };
 
-export default ChatMessages;
+export default dynamic(() => Promise.resolve(ChatMessages), {
+  loading: () => <div className="flex-1 flex-grow" />,
+  ssr: false,
+});

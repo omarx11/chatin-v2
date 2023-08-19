@@ -1,5 +1,5 @@
 "use client";
-import { MessagesProvider } from "@/app/context/messages";
+import { StatementProvider } from "@/app/context/statement";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const Providers = ({ children }) => {
@@ -7,7 +7,7 @@ const Providers = ({ children }) => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <MessagesProvider>{children}</MessagesProvider>
+      <StatementProvider>{children}</StatementProvider>
     </QueryClientProvider>
   );
 };

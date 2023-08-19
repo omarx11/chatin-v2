@@ -1,17 +1,17 @@
-import "./globals.css";
+import "./globals.scss";
 import { Recursive } from "next/font/google";
 import Providers from "@/app/components/Providers";
-import { config } from "./data/config";
+import { meta } from "./data/config";
 
 const recursive = Recursive({ subsets: ["latin"] });
 
 export const metadata = {
-  metadataBase: new URL(config.siteUrl),
-  title: config.title,
-  description: config.descriptionFull,
-  keywords: config.keywords,
-  authors: { name: config.author },
-  creator: config.author,
+  metadataBase: new URL(meta.siteUrl),
+  title: meta.title,
+  description: meta.descriptionFull,
+  keywords: meta.keywords,
+  authors: { name: meta.author },
+  creator: meta.author,
   icons: {
     icon: ["/favicon.ico"],
   },
@@ -20,21 +20,21 @@ export const metadata = {
     { media: "(prefers-color-scheme: dark)", color: "black" },
   ],
   openGraph: {
-    title: config.description,
-    description: config.descriptionFull,
-    url: config.siteUrl,
-    siteName: config.title,
+    title: meta.description,
+    description: meta.descriptionFull,
+    url: meta.siteUrl,
+    siteName: meta.title,
     images: [
       {
-        url: config.ogImage,
+        url: meta.ogImage,
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: config.description,
-    description: config.descriptionFull,
+    title: meta.description,
+    description: meta.descriptionFull,
     images: ["https://test.omar11.sa/og.png"],
   },
   manifest: "/manifest.json",
@@ -47,7 +47,7 @@ export default function RootLayout({ children }) {
       className="tracking min-h-screen overflow-x-hidden scroll-smooth antialiased"
     >
       <body
-        className={`${recursive.className} flex flex-col items-center mx-2 min-h-screen bg-[rgb(17,24,39)]`}
+        className={`${recursive.className} flex min-h-screen flex-row items-start justify-center bg-[rgb(17,24,39)] pt-12 md:pt-24`}
       >
         <Providers>{children}</Providers>
       </body>

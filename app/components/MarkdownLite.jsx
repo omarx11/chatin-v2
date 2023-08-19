@@ -24,10 +24,10 @@ const MarkdownLite = ({ text }) => {
         key={linkUrl}
         href={linkUrl}
         target="_blank"
-        className="break-words underline underline-offset-2 text-blue-600"
+        className="break-words text-blue-600 underline underline-offset-2"
       >
         {linkText}
-      </Link>
+      </Link>,
     );
 
     lastIndex = matchEnd;
@@ -48,9 +48,9 @@ const MarkdownLite = ({ text }) => {
         src={linkUrl}
         width={512}
         height={512}
-        className="my-3 ring-4 ring-violet-400 select-none drag-none"
+        className="drag-none my-3 select-none ring-4 ring-violet-400"
         alt="Image from AI"
-      />
+      />,
     );
 
     lastIndex = matchEnd;

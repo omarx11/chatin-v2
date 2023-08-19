@@ -1,6 +1,6 @@
 {
   "name": "chatin_app",
-  "version": "2.3.0",
+  "version": "2.3.3",
   "private": false,
   "scripts": {
     "dev": "next dev",
@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mantine/hooks": "^6.0.19",
     "@nextui-org/react": "^1.0.0-beta.13",
     "@supabase/supabase-js": "^2.32.0",
     "@tailwindcss/forms": "^0.5.3",

@@ -56,7 +56,7 @@ const ChatSettings = () => {
 
   const handleScreenShoot = (e) => {
     e.preventDefault();
-    toPng(document.getElementById("chatBox"))
+    toPng(document.getElementById("chatBoxImage"))
       .then((dataUrl) => {
         const link = document.createElement("a");
         link.download = `chat-${Date.now()}.png`;
@@ -90,7 +90,7 @@ const ChatSettings = () => {
   };
 
   return (
-    <div className="mr-2 mt-[114px] hidden flex-col gap-2 sm:flex">
+    <div className="fade-in-history mr-2 mt-[114px] hidden flex-col gap-2 sm:flex">
       <Tooltip
         content={
           <span className="whitespace-nowrap">mute yumeko from talking</span>
@@ -254,14 +254,16 @@ const ChatSettings = () => {
         </button>
       </Tooltip>
       <Tooltip
-        content={<span className="whitespace-nowrap">very soon!</span>}
+        content={
+          <span className="whitespace-nowrap">See what people chat about!</span>
+        }
         offset={4}
         color="secondary"
         placement="leftStart"
         className="mt-4 rounded-full"
         hideArrow
       >
-        <Link href="#" className="rounded-full">
+        <Link href="./history" target="_self" className="rounded-full">
           <button className="rounded-full bg-violet-800 p-1.5 hover:bg-violet-900">
             <svg
               xmlns="http://www.w3.org/2000/svg"

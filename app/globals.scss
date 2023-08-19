@@ -40,4 +40,30 @@
       scale: 0.1rem;
     }
   }
+
+  .fade-in-history > * {
+    animation-name: fade-in-history;
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.14, 0.64, 0.51, 0.94);
+  }
+  @for $i from 1 through 24 {
+    .fade-in-history > :nth-child(#{$i}) {
+      animation-delay: #{$i / 20}s;
+    }
+  }
+  @keyframes fade-in-history {
+    from {
+      opacity: 0;
+      transform: translateY(0.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  // TODO: style this thing!
+  .scroll::-webkit-scrollbar {
+    width: 0;
+  }
 }

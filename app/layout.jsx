@@ -7,7 +7,10 @@ const recursive = Recursive({ subsets: ["latin"] });
 
 export const metadata = {
   metadataBase: new URL(meta.siteUrl),
-  title: meta.title,
+  title: {
+    default: meta.title,
+    template: `%s - ${meta.title}`,
+  },
   description: meta.descriptionFull,
   keywords: meta.keywords,
   authors: { name: meta.author },

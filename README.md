@@ -12,7 +12,7 @@ Presenting ( Yumeko ) 🤦🏻 – an anime character, That you can talk to usin
 
 <details> <summary> Play </summary>
 
-[Yumeko Identify](https://user-images.githubusercontent.com/12028621/232730475-4babdd1b-6078-47d0-811a-68678d009918.webm)
+[Yumeko.identify](https://raw.githubusercontent.com/omarx11/chatin-v2/main/public/static/audio/identify2.mp3)
 
 </details>
 
@@ -48,11 +48,11 @@ Here's a rundown of the technologies and tools I've used to build this App:
 
 <div align="center" style="padding: 30px">
 
-![chatin-screenshot-1](https://cdn.discordapp.com/attachments/1124919372838883460/1147373556473270284/Screenshot-1.png)
+![chatin-screenshot-1](https://raw.githubusercontent.com/omarx11/chatin-v2/main/public/static/images/github/Screenshot-1.png)
 
-![chatin-gif](https://cdn.discordapp.com/attachments/1124919372838883460/1147383006936449115/ezgif.com-video-to-gif.gif)
+![chatin-gif](https://raw.githubusercontent.com/omarx11/chatin-v2/main/public/static/images/github/chatin-gif.gif)
 
-![chatin-screenshot-2](https://cdn.discordapp.com/attachments/1124919372838883460/1147375835767128075/Screenshot-2.png)
+![chatin-screenshot-2](https://raw.githubusercontent.com/omarx11/chatin-v2/main/public/static/images/github/Screenshot-2.png)
 
 </div>
 
@@ -60,7 +60,7 @@ Here's a rundown of the technologies and tools I've used to build this App:
 
 This app is hosted and deployed in Vercel for many futures to get the best user-end performance like > automatic scaling, easy integration with git, easy configuration, and more..
 
-> #### [( Chatin Page Website )](https://chatin2.vercel.app/)
+> #### [( Chatin Website Page )](https://chatin2.vercel.app/)
 
 ## 🎙️ Speech Recognition
 

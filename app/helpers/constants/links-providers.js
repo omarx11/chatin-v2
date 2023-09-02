@@ -1,4 +1,4 @@
-export const linksData = `{
+export const linksData = `data = {
   images: [
     {
       animes: [

@@ -14,7 +14,6 @@ import { Dropdown } from "@nextui-org/react";
 const ChatSpeech = () => {
   const defaultLang = "en-US";
   const defaultVoise = "AZnzlk1XvdvUeBnXmlld";
-
   const [selectedLanguage, setSelectedLanguage] = useState(
     new Set([defaultLang]),
   );
@@ -44,7 +43,7 @@ const ChatSpeech = () => {
       try {
         const voiseId = selectedVoise?.currentKey ?? defaultVoise;
         // remove links, domains, extra spaces,
-        // symbols, emojis, markdown images.
+        // symbols, emojis, markdown images from AI text.
         const message = messages
           .at(-1)
           .text.substring(0, 1000)
@@ -71,7 +70,7 @@ const ChatSpeech = () => {
         setChatStatus(null);
         setSubscriptionInfo(await getSubscriptionInfo());
       } catch {
-        // Do nothing
+        setChatStatus("Error");
       }
     }
     resetTranscript();
@@ -169,7 +168,7 @@ const ChatSpeech = () => {
         try {
           const voiseId = selectedVoise?.currentKey ?? defaultVoise;
           // remove links, domains, extra spaces,
-          // symbols, emojis, markdown images.
+          // symbols, emojis, markdown images from AI text.
           const message = messages
             .at(-1)
             .text.substring(0, 1000)
@@ -196,7 +195,7 @@ const ChatSpeech = () => {
           setChatStatus(null);
           setSubscriptionInfo(await getSubscriptionInfo());
         } catch {
-          // Do nothing
+          setChatStatus("Error");
         }
       }
     })();
@@ -246,6 +245,16 @@ const ChatSpeech = () => {
     SpeechRecognition.stopListening();
     resetTranscript();
   };
+
+  // dropdown section title
+  function dsTitle(title, disc) {
+    return (
+      <>
+        <p className="-mt-8 p-2">{title}</p>
+        <p className="-mb-7 -mt-2 p-2">{disc}</p>
+      </>
+    );
+  }
 
   return (
     <div className="mb-4 mt-4 rounded-lg bg-violet-950 p-2 shadow-md shadow-violet-500/50 ring-4 ring-violet-900/40 sm:mt-8">
@@ -305,7 +314,12 @@ const ChatSpeech = () => {
               selectedKeys={selectedLanguage}
               onSelectionChange={setSelectedLanguage}
             >
-              <Dropdown.Section title="Select Speech Language">
+              <Dropdown.Section
+                title={dsTitle(
+                  "( Select Speech Language )",
+                  "works with speech transcript.",
+                )}
+              >
                 <Dropdown.Item key="en-US">English (US)</Dropdown.Item>
                 <Dropdown.Item key="ar-SA">Arabic (SA)</Dropdown.Item>
                 <Dropdown.Item key="ja">Japanese</Dropdown.Item>
@@ -338,7 +352,12 @@ const ChatSpeech = () => {
               selectedKeys={selectedVoise}
               onSelectionChange={setSelectedVoise}
             >
-              <Dropdown.Section title="Select AI Speak Voice">
+              <Dropdown.Section
+                title={dsTitle(
+                  "( Select AI Speak Voice )",
+                  "this only effict to the sound output and not inclouding charecters.",
+                )}
+              >
                 <Dropdown.Item key="AZnzlk1XvdvUeBnXmlld">
                   Yumeko (default)
                 </Dropdown.Item>

@@ -9,6 +9,8 @@ import MarkdownLite from "../components/MarkdownLite";
 // set how many data returned per call.
 const dataReq = 3;
 
+// TODO: Limit chats length to 50.
+
 const fetchData = async (page) => {
   const res = await fetch("/api/supabase", {
     method: "GET",
@@ -71,14 +73,14 @@ export default function Pagination() {
               A list of all conversations by humans! ( Chatin App )
             </h1>
             <span className="text-xs text-neutral-400">
-              List is sorted by chat creation date. ⏲️
+              This list is sorted by chat creation date. ⏲️
             </span>
             <div className="mt-4 flex justify-between text-neutral-200">
               <p>
                 Total of <span className="text-violet-300">{chatLength}</span>{" "}
                 conversations..
               </p>
-              <Link
+              <a
                 href="/"
                 target="_self"
                 className="mr-1 flex items-center gap-1 text-sm text-sky-400 hover:text-sky-600 hover:underline hover:underline-offset-2"
@@ -98,7 +100,7 @@ export default function Pagination() {
                   </g>
                 </svg>
                 go back
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -106,10 +108,10 @@ export default function Pagination() {
           return (
             <div
               ref={ref}
-              className="scroll group flex h-[36rem] max-w-[30rem] flex-col gap-3 overflow-y-auto rounded-md bg-gradient-to-r from-purple-950 via-purple-900 to-purple-950 py-3 pb-3 ring-4 ring-violet-900 hover:pt-0"
+              className="no-scroll-style group flex h-[36rem] max-w-[30rem] flex-col gap-3 overflow-x-hidden rounded-md bg-purple-950 from-purple-950 via-purple-900 to-purple-950 py-3 pb-3 ring-4 ring-violet-900 hover:bg-gradient-to-r hover:pt-0 hover:ring-violet-900/75"
               key={i}
             >
-              <div className="absolute top-0 -mx-3 rounded-md bg-gray-950/50 py-2 text-sm opacity-0 group-hover:sticky group-hover:opacity-100">
+              <div className="absolute top-0 -mx-3 rounded-md bg-gray-900/75 py-2 text-sm opacity-0 group-hover:sticky group-hover:opacity-100">
                 <div className="flex flex-col text-center">
                   <span className="">{`[ ${user.id} ]`}</span>
                   <span>{user.user_uuid}</span>
@@ -166,11 +168,13 @@ export default function Pagination() {
         onClick={() => fetchNextPage()}
         disabled={isFetchingNextPage}
       >
-        {isFetchingNextPage
-          ? "Loading more..."
-          : (data?.pages.length ?? 0) < Math.ceil(chatLength / dataReq)
-          ? "Load More!"
-          : "Nothing more to load"}
+        {chatLength !== 0
+          ? isFetchingNextPage
+            ? "Loading more..."
+            : (data?.pages.length ?? 0) < Math.ceil(chatLength / dataReq)
+            ? "Load More!"
+            : "Nothing more to load"
+          : "Loading Chats data..."}
       </button>
     </div>
   );

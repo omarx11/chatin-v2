@@ -50,7 +50,7 @@ export default function RootLayout({ children }) {
       className="tracking min-h-screen overflow-x-hidden scroll-smooth antialiased"
     >
       <body
-        className={`${recursive.className} flex min-h-screen flex-row items-start justify-center bg-[rgb(17,24,39)] pt-12 md:pt-24`}
+        className={`${recursive.className} flex min-h-screen flex-row items-start justify-center bg-[rgb(17,24,39)] pt-12 md:pt-20`}
       >
         <Providers>{children}</Providers>
       </body>

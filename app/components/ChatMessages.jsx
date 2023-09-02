@@ -2,6 +2,7 @@
 import { StatementContext } from "@/app/context/statement";
 import { cn } from "@/app/lib/utils";
 import { useContext, useEffect, useState } from "react";
+import { useCookies } from "next-client-cookies";
 import MarkdownLite from "./MarkdownLite";
 import dynamic from "next/dynamic";
 
@@ -9,6 +10,8 @@ const ChatMessages = () => {
   const { messages, isAudioMuted } = useContext(StatementContext);
   const [isAudioStart, setIsAudioStart] = useState(false);
   const inverseMessages = [...messages].reverse();
+
+  const cookies = useCookies();
 
   useEffect(() => {
     const audio = document.getElementById("identify");
@@ -24,7 +27,7 @@ const ChatMessages = () => {
   }, [isAudioStart]);
 
   return (
-    <div className="fade-in flex flex-1 flex-col-reverse gap-3 overflow-y-auto rounded-lg px-0 py-3 md:px-2">
+    <div className="fade-in msg-scroll flex flex-1 flex-col-reverse gap-3 overflow-y-auto rounded-lg px-0 py-3 md:px-2">
       <div className="flex-1 flex-grow" />
       {inverseMessages.map((message) => {
         return (
@@ -97,6 +100,9 @@ const ChatMessages = () => {
         className="hidden"
         preload="none"
       ></audio>
+      <p className="border-b border-neutral-600 pb-2 text-center text-sm text-neutral-200">
+        ID: {cookies.get("uuid") ?? "anonymous"}
+      </p>
     </div>
   );
 };

@@ -17,7 +17,7 @@ const ChatSettings = () => {
     isMessageUpdating,
   } = useContext(StatementContext);
 
-  // save (Textarea) AI and user chat to localStorage and database.
+  // (Textarea) save AI and user chat to localStorage and database.
   useEffect(() => {
     if (isMessageUpdating === true && messages.length > 1) {
       setTimeout(

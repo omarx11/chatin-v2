@@ -1,6 +1,6 @@
 export const meta = {
   author: "Omar Abdulaziz",
-  siteUrl: "https://chat.omar11.sa",
+  siteUrl: "https://chatin2.vercel.app",
   title: "Chatin",
   description: "Chatin Application",
   descriptionFull:
@@ -12,6 +12,7 @@ export const meta = {
     "Chat history",
     "Text to speech",
     "chat.omar11.sa",
+    "chatin2.vercel.app",
   ],
   ogImage: "/og.png",
 };

@@ -20,21 +20,21 @@ Presenting ( Yumeko ) 🤦🏻 – an anime character, That you can talk to usin
 
 ## 🌌 Features
 
-- [Next.js](https://nextjs.org/) for Fullstack Framework Javascript.
-- Integrate Chatbot API with [OpenAI](https://openai.com/).
-- Yumeko AI Speaks with [Elevenlabs](https://elevenlabs.io/).
-- Chat Markdown Support: links, images.
-- Supports Voice Input, So you Can Talk to Yumeko.
-- Speech-to-Text Realtime Voice Cloning.
-- Speech Transcript Supports Multiple Languages.
-- Automatically Saves Chat History to LocalStorage.
-- Take an Image Screenshot of Your Chat.
-- Real-time Streamed ChatBot Responses.
-- Secured, Rate-limited API Routes to Prevent Abuse.
+- 🚀 Next.js for fullstack framework javaScript.
+- 🤖 Integrate Chatbot API with OpenAI.
+- 👄 Yumeko speaks using elevenlabs technology.
+- 🖼️ Chat markdown support: Links and Images.
+- 🗣️ Supports voice input, So you can talk to yumeko.
+- 🎙️ Speech-to-Text Realtime voice cloning.
+- 🌍 Speech transcript supports multiple languages.
+- 💾 Automatically saves chat history to localStorage.
+- 📸 Take a screenshot image of your chat.
+- ⏱️ Real-time streamed Chatbot responses.
+- 🔒 Secured, Rate-limited API routes to prevent abuse.
 
-## 📝 Tech Stack
+## 🛠️ Tech Stack
 
-Here's a rundown of the technologies and tools I've used to build this App:
+Here's a rundown of the technologies and tools 📝 I've used to build this App:
 
 | Name       | Link                                         |
 | ---------- | -------------------------------------------- |
@@ -66,7 +66,7 @@ This app is hosted and deployed in Vercel for many futures to get the best user-
 
 In this app, i use Speech Recognition and it's an npm package called [react-speech-recognition](https://www.npmjs.com/package/react-speech-recognition) that can activate the microphone and turn the user's speech into text that it can process to ChatGPT.
 
-It supported multiple languages like:
+It supported multiple 🌍 languages like:
 
 - English
 - Arabic
@@ -79,7 +79,7 @@ It supported multiple languages like:
 
 also, It is recommended to open this app web with Google Chrome 🌐 since other browsers do not support speech recognition.
 
-> Speech recognition is not supported on mobile devices.
+> Speech recognition is not supported on 📱 mobile devices.
 
 ## 💁🏻 How Can I help?
 

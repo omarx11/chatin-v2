@@ -12,7 +12,7 @@ Presenting ( Yumeko ) 🤦🏻 – an anime character, That you can talk to usin
 
 <details> <summary> Play </summary>
 
-[Yumeko.identify](https://raw.githubusercontent.com/omarx11/chatin-v2/main/public/static/audio/identify2.mp3)
+[Yumeko-identify.webm](https://github.com/omarx11/chatin-v2/assets/87499333/d5cab3be-3537-459b-a942-579a6af83f5c)
 
 </details>
 
@@ -47,12 +47,12 @@ Here's a rundown of the technologies and tools I've used to build this App:
 ## 📷 Screenshots
 
 <div align="center" style="padding: 30px">
+  
+![Screenshot-1](https://github.com/omarx11/chatin-v2/assets/87499333/aaee704d-2081-4b40-9d88-00375044066c)
 
-![chatin-screenshot-1](https://raw.githubusercontent.com/omarx11/chatin-v2/main/public/static/images/github/Screenshot-1.png)
+![chatin-gif](https://github.com/omarx11/chatin-v2/assets/87499333/efef6638-d16d-4938-8138-bbd53ad21558)
 
-![chatin-gif](https://raw.githubusercontent.com/omarx11/chatin-v2/main/public/static/images/github/chatin-gif.gif)
-
-![chatin-screenshot-2](https://raw.githubusercontent.com/omarx11/chatin-v2/main/public/static/images/github/Screenshot-2.png)
+![Screenshot-2](https://github.com/omarx11/chatin-v2/assets/87499333/da928d75-e239-4ce9-b064-2195ead479d1)
 
 </div>
 

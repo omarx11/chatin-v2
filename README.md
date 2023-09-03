@@ -46,13 +46,13 @@ Here's a rundown of the technologies and tools 📝 I've used to build this App:
 
 ## 📷 Screenshots
 
-<div align="center" style="max-width: 768px; margin: 0 auto;">
-  
-![Screenshot-1](https://github.com/omarx11/chatin-v2/assets/87499333/aaee704d-2081-4b40-9d88-00375044066c)
+<div align="center">
 
-![chatin-gif](https://github.com/omarx11/chatin-v2/assets/87499333/efef6638-d16d-4938-8138-bbd53ad21558)
+<img src="https://github.com/omarx11/chatin-v2/assets/87499333/efef6638-d16d-4938-8138-bbd53ad21558" style="width:80%; margin-bottom: 20px" />
 
-![Screenshot-2](https://github.com/omarx11/chatin-v2/assets/87499333/da928d75-e239-4ce9-b064-2195ead479d1)
+<img src="https://github.com/omarx11/chatin-v2/assets/87499333/aaee704d-2081-4b40-9d88-00375044066c" style="width:80%; margin-bottom: 20px" />
+
+<img src="https://github.com/omarx11/chatin-v2/assets/87499333/da928d75-e239-4ce9-b064-2195ead479d1" style="width:80%" />
 
 </div>
 
@@ -93,7 +93,7 @@ Give a ⭐️ if this project helped you!
 
 ## 🤍 Support me
 
-Your support will help me improve this project, and pay my API bills, and it will help me also keep this App running at its best, Thank you anyway for visiting my GitHub repo ❤️
+Your support will help me improve this project, and pay my API bills, and it will help me also keep this App running at its best, Thank you anyway for visiting my GitHub repo 💖
 
 [Sponsoring on GitHub](https://github.com/sponsors/omarx11)
 

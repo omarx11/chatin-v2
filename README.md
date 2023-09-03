@@ -46,7 +46,7 @@ Here's a rundown of the technologies and tools 📝 I've used to build this App:
 
 ## 📷 Screenshots
 
-<div align="center" style="padding: 30px">
+<div align="center" style="max-width: 768px; margin: 0 auto;">
   
 ![Screenshot-1](https://github.com/omarx11/chatin-v2/assets/87499333/aaee704d-2081-4b40-9d88-00375044066c)
 

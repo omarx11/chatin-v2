@@ -12,7 +12,7 @@ Presenting ( Yumeko ) 🤦🏻 – an anime character, That you can talk to usin
 
 <details> <summary> Play </summary>
 
-[yumeko-identify.webm](https://github.com/omarx11/chatin-v2/assets/87499333/dc03d866-141c-4a5a-b45d-31c520fd6049)
+[yumeko-identify.webm](https://github.com/omarx11/chatin-v2/assets/87499333/2156d32d-0685-480c-adc1-4ca59d03484a)
 
 </details>
 

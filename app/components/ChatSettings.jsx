@@ -17,6 +17,7 @@ const ChatSettings = () => {
     isMessageUpdating,
   } = useContext(StatementContext);
 
+  // On development mode you can comment this if you don't want chat to save.
   // (Textarea) save AI and user chat to localStorage and database.
   useEffect(() => {
     if (isMessageUpdating === true && messages.length > 1) {
@@ -188,7 +189,7 @@ const ChatSettings = () => {
         </Link>
       </Tooltip>
       <Tooltip
-        content={<span className="whitespace-nowrap">take a screen shot</span>}
+        content={<span className="whitespace-nowrap">take a screenShot</span>}
         offset={4}
         color="secondary"
         placement="leftStart"
@@ -214,7 +215,7 @@ const ChatSettings = () => {
       </Tooltip>
       <Tooltip
         content={
-          <span className="whitespace-nowrap">switch full screen mode</span>
+          <span className="whitespace-nowrap">switch fullScreen mode</span>
         }
         offset={4}
         color="secondary"
@@ -254,13 +255,11 @@ const ChatSettings = () => {
         </button>
       </Tooltip>
       <Tooltip
-        content={
-          <span className="whitespace-nowrap">See what people chat about!</span>
-        }
+        content={<span className="whitespace-nowrap">chatin database</span>}
         offset={4}
         color="secondary"
         placement="leftStart"
-        className="mt-4 rounded-full"
+        className="mt-2 rounded-full"
         hideArrow
       >
         <Link href="./history" target="_self" className="rounded-full">

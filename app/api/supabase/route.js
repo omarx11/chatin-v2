@@ -17,7 +17,7 @@ export async function GET(req, res) {
     const { data, error } = await supabase
       .from("chatin")
       .select()
-      .order("created_at", { ascending: false });
+      .order("created_at", { ascending: true });
 
     // display the data
     return new Response(JSON.stringify(data));

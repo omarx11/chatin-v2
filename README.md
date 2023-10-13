@@ -12,7 +12,7 @@ Presenting ( Yumeko ) 🤦🏻 – an anime character, That you can talk to usin
 
 <details> <summary> Play </summary>
 
-[Yumeko Identify](https://user-images.githubusercontent.com/12028621/232730475-4babdd1b-6078-47d0-811a-68678d009918.webm)
+[yumeko-identify.webm](https://github.com/omarx11/chatin-v2/assets/87499333/2156d32d-0685-480c-adc1-4ca59d03484a)
 
 </details>
 
@@ -20,21 +20,21 @@ Presenting ( Yumeko ) 🤦🏻 – an anime character, That you can talk to usin
 
 ## 🌌 Features
 
-- [Next.js](https://nextjs.org/) for Fullstack Framework Javascript.
-- Integrate Chatbot API with [OpenAI](https://openai.com/).
-- Yumeko AI Speaks with [Elevenlabs](https://elevenlabs.io/).
-- Chat Markdown Support: links, images.
-- Supports Voice Input, So you Can Talk to Yumeko.
-- Speech-to-Text Realtime Voice Cloning.
-- Speech Transcript Supports Multiple Languages.
-- Automatically Saves Chat History to LocalStorage.
-- Take an Image Screenshot of Your Chat.
-- Real-time Streamed ChatBot Responses.
-- Secured, Rate-limited API Routes to Prevent Abuse.
+- 🚀 Next.js for fullstack framework javaScript.
+- 🤖 Integrate Chatbot API with OpenAI.
+- 👄 Yumeko speaks using elevenlabs technology.
+- 🖼️ Chat markdown support: Links and Images.
+- 🗣️ Supports voice input, So you can talk to yumeko.
+- 🎙️ Speech-to-Text Realtime voice cloning.
+- 🌍 Speech transcript supports multiple languages.
+- 💾 Automatically saves chat history to localStorage.
+- 📸 Take a screenshot image of your chat.
+- ⏱️ Real-time streamed Chatbot responses.
+- 🔒 Secured, Rate-limited API routes to prevent abuse.
 
-## 📝 Tech Stack
+## 🛠️ Tech Stack
 
-Here's a rundown of the technologies and tools I've used to build this App:
+Here's a rundown of the technologies and tools 📝 I've used to build this App:
 
 | Name       | Link                                         |
 | ---------- | -------------------------------------------- |
@@ -46,13 +46,13 @@ Here's a rundown of the technologies and tools I've used to build this App:
 
 ## 📷 Screenshots
 
-<div align="center" style="padding: 30px">
+<div align="center">
 
-![chatin-screenshot-1](https://cdn.discordapp.com/attachments/1124919372838883460/1147373556473270284/Screenshot-1.png)
+<img src="https://github.com/omarx11/chatin-v2/assets/87499333/efef6638-d16d-4938-8138-bbd53ad21558" style="width:80%; margin-bottom: 20px" />
 
-![chatin-gif](https://cdn.discordapp.com/attachments/1124919372838883460/1147383006936449115/ezgif.com-video-to-gif.gif)
+<img src="https://github.com/omarx11/chatin-v2/assets/87499333/aaee704d-2081-4b40-9d88-00375044066c" style="width:80%; margin-bottom: 20px" />
 
-![chatin-screenshot-2](https://cdn.discordapp.com/attachments/1124919372838883460/1147375835767128075/Screenshot-2.png)
+<img src="https://github.com/omarx11/chatin-v2/assets/87499333/da928d75-e239-4ce9-b064-2195ead479d1" style="width:80%" />
 
 </div>
 
@@ -60,13 +60,13 @@ Here's a rundown of the technologies and tools I've used to build this App:
 
 This app is hosted and deployed in Vercel for many futures to get the best user-end performance like > automatic scaling, easy integration with git, easy configuration, and more..
 
-> #### [( Chatin Page Website )](https://chatin2.vercel.app/)
+> #### [( Chatin Website Page )](https://chatin2.vercel.app/)
 
 ## 🎙️ Speech Recognition
 
 In this app, i use Speech Recognition and it's an npm package called [react-speech-recognition](https://www.npmjs.com/package/react-speech-recognition) that can activate the microphone and turn the user's speech into text that it can process to ChatGPT.
 
-It supported multiple languages like:
+It supported multiple 🌍 languages like:
 
 - English
 - Arabic
@@ -79,7 +79,7 @@ It supported multiple languages like:
 
 also, It is recommended to open this app web with Google Chrome 🌐 since other browsers do not support speech recognition.
 
-> Speech recognition is not supported on mobile devices.
+> Speech recognition is not supported on 📱 mobile devices.
 
 ## 💁🏻 How Can I help?
 
@@ -93,7 +93,7 @@ Give a ⭐️ if this project helped you!
 
 ## 🤍 Support me
 
-Your support will help me improve this project, and pay my API bills, and it will help me also keep this App running at its best, Thank you anyway for visiting my GitHub repo ❤️
+Your support will help me improve this project, and pay my API bills, and it will help me also keep this App running at its best, Thank you anyway for visiting my GitHub repo 💖
 
 [Sponsoring on GitHub](https://github.com/sponsors/omarx11)
 

@@ -106,7 +106,7 @@ const ChatInput = () => {
           value={input}
           disabled={isLoading}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Tell me hi or something..."
+          placeholder="Say hi or something..."
           className="block w-full resize-none bg-neutral-200 py-1.5 pr-24 text-sm font-semibold text-neutral-900 caret-violet-500 placeholder:italic focus:shadow-inner focus:shadow-neutral-500 disabled:opacity-50 sm:leading-6"
         />
         <div className="absolute inset-y-0 right-0 flex py-1.5 pr-1">

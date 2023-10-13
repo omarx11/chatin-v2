@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 const defaultValue = [
   {
     id: nanoid(),
-    text: "Hi, I'm Yumeko. how can I serve you today?",
+    text: "Hi, I'm Yumeko. how can I assist you today?",
     isUserMessage: false,
     ai_voise_id: null,
     ai_voise_name: null,

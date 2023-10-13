@@ -1,6 +1,6 @@
 {
   "name": "chatin_app",
-  "version": "2.3.3",
+  "version": "2.3.5",
   "private": false,
   "scripts": {
     "dev": "next dev",
@@ -25,23 +25,23 @@
     "framer-motion": "^10.15.0",
     "html-to-image": "^1.11.11",
     "nanoid": "^4.0.2",
-    "next": "^13.4.12",
-    "next-client-cookies": "^1.0.3",
-    "postcss": "8.4.23",
+    "next": "^13.5.4",
+    "next-client-cookies": "^1.0.5",
+    "postcss": "^8.4.23",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-speech-recognition": "^3.10.0",
     "react-textarea-autosize": "^8.4.1",
     "regenerator-runtime": "^0.13.11",
-    "tailwind-merge": "^1.12.0",
-    "tailwindcss": "^3.3.1",
-    "uuid": "^9.0.0",
+    "tailwind-merge": "^1.14.0",
+    "tailwindcss": "^3.3.3",
+    "uuid": "^9.0.1",
     "zod": "^3.21.4"
   },
   "devDependencies": {
     "encoding": "^0.1.13",
-    "prettier": "^3.0.2",
-    "prettier-plugin-tailwindcss": "^0.5.3",
-    "sass": "^1.63.6"
+    "prettier": "^3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.5",
+    "sass": "^1.69.3"
   }
 }

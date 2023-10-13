@@ -39,6 +39,7 @@ const ChatSpeech = () => {
 
   async function doAudio() {
     if (transcript !== "" && !isAudioMuted) {
+      setIsLoading(true);
       setChatStatus("loading-audio");
       try {
         const voiseId = selectedVoise?.currentKey ?? defaultVoise;
@@ -68,6 +69,7 @@ const ChatSpeech = () => {
         new Audio(audioUrl).play();
 
         setChatStatus(null);
+        setIsLoading(false);
         setSubscriptionInfo(await getSubscriptionInfo());
       } catch {
         setChatStatus("Error");
@@ -164,6 +166,7 @@ const ChatSpeech = () => {
   useEffect(() => {
     (async () => {
       if (isMessageUpdating === true && !isAudioMuted) {
+        setIsLoading(true);
         setChatStatus("loading-audio");
         try {
           const voiseId = selectedVoise?.currentKey ?? defaultVoise;
@@ -193,6 +196,7 @@ const ChatSpeech = () => {
           new Audio(audioUrl).play();
 
           setChatStatus(null);
+          setIsLoading(false);
           setSubscriptionInfo(await getSubscriptionInfo());
         } catch {
           setChatStatus("Error");

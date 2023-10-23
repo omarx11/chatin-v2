@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { rateLimiter } from "@/app/lib/rate-limiter";
+import { errorMsg } from "./app/data/errorMsg";
 
 // This function can be marked `async` if using `await` inside
 export async function middleware(req) {
@@ -8,11 +9,11 @@ export async function middleware(req) {
   try {
     const { success } = await rateLimiter.limit(ip);
 
-    if (!success) return new NextResponse("You are writing messages too fast.");
+    if (!success) return new NextResponse(errorMsg.limit);
     return NextResponse.next();
   } catch (error) {
     return new NextResponse(
-      "Sorry, something went wrong processing your message. Please refresh the page."
+      "Please try to refresh the page, something went wrong!",
     );
   }
 }

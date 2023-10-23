@@ -2,14 +2,14 @@
 import { StatementContext } from "@/app/context/statement";
 import { useMutation } from "@tanstack/react-query";
 import { nanoid } from "nanoid";
-import { useContext, useRef, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 
 const ChatInput = () => {
-  const textareaRef = useRef(null);
   const [input, setInput] = useState("");
   const {
     messages,
+    textareaRef,
     addMessage,
     removeMessage,
     updateMessage,
@@ -44,24 +44,25 @@ const ChatInput = () => {
     onSuccess: async (stream) => {
       if (!stream) throw new Error("No stream");
 
-      // construct new message to add
+      const reader = stream.getReader();
+      const decoder = new TextDecoder();
+      let done = false;
+
+      setChatStatus(null);
+      setIsLoading(false);
+
       const id = nanoid();
       const responseMessage = {
         id,
         isUserMessage: false,
         text: "",
+        time: Date.now(),
         ai_voise_id: aiVoiseId,
         ai_voise_name: aiVoiseName,
       };
 
       // add new message to state
-      setChatStatus(null);
-      setIsLoading(false);
       addMessage(responseMessage);
-
-      const reader = stream.getReader();
-      const decoder = new TextDecoder();
-      let done = false;
 
       while (!done) {
         const { value, done: doneReading } = await reader.read();
@@ -84,6 +85,10 @@ const ChatInput = () => {
     },
   });
 
+  useEffect(() => {
+    textareaRef.current?.focus();
+  }, []);
+
   return (
     <div className="px-3">
       <div className="relative my-4 flex-1 overflow-hidden rounded-md border-none outline-none">
@@ -96,6 +101,7 @@ const ChatInput = () => {
                 id: nanoid(),
                 isUserMessage: true,
                 text: input,
+                time: Date.now(),
               };
               setIsMessageUpdating(false);
               sendMessage(message);

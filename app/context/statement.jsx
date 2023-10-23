@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useRef, useState } from "react";
 import { nanoid } from "nanoid";
 
 const defaultValue = [
@@ -6,6 +6,7 @@ const defaultValue = [
     id: nanoid(),
     text: "Hi, I'm Yumeko. how can I assist you today?",
     isUserMessage: false,
+    time: Date.now(),
     ai_voise_id: null,
     ai_voise_name: null,
     isFirstMessage: true,
@@ -31,6 +32,7 @@ export function StatementProvider({ children }) {
       : defaultValue;
 
   const [messages, setMessages] = useState(chatStorage);
+  const textareaRef = useRef(null);
 
   const addMessage = (message) => {
     setMessages((prev) => [...prev, message]);
@@ -61,6 +63,7 @@ export function StatementProvider({ children }) {
     <StatementContext.Provider
       value={{
         messages,
+        textareaRef,
         isMessageUpdating,
         chatStatus,
         isLoading,

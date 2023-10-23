@@ -40,6 +40,7 @@ export async function POST(req, res) {
       const { data, error } = await supabase
         .from("chatin")
         .select()
+        // .limit(10)
         .order("created_at", { ascending: false });
 
       // display the data

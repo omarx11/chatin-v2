@@ -6,6 +6,7 @@ import { toPng } from "html-to-image";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { removeCookie } from "@/app/lib/cookies";
+import { errorMsg } from "../data/errorMsg";
 
 const ChatSettings = () => {
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -20,7 +21,11 @@ const ChatSettings = () => {
   // On development mode you can comment this if you don't want chat to save.
   // (Textarea) save AI and user chat to localStorage and database.
   useEffect(() => {
-    if (isMessageUpdating === true && messages.length > 1) {
+    if (
+      isMessageUpdating === true &&
+      messages.length > 1 &&
+      messages.at(-1).text !== errorMsg.limit
+    ) {
       setTimeout(
         () =>
           typeof window !== "undefined" &&

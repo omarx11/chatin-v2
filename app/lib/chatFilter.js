@@ -1,7 +1,7 @@
 // filter bad words from chat conversation
 export function filter(chat) {
   // TODO: add more words..
-  const cusswords = ["sex", "fuck"];
+  const cusswords = ["sex", "fuck", "dick", "كس"];
   var chat;
   for (let i = 0; i < cusswords.length; i++) {
     const length = String(cusswords[i]).length;

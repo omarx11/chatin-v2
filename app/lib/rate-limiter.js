@@ -1,10 +1,10 @@
-import { redis } from "@/app/lib/redis";
 import { Ratelimit } from "@upstash/ratelimit";
+import { Redis } from "@upstash/redis";
 
-// Create a new ratelimiter, that allows 10 requests per 10 seconds
+// a ratelimiter, that allows 10 requests per 12 hours
 export const rateLimiter = new Ratelimit({
-  redis,
-  limiter: Ratelimit.slidingWindow(4, "10 s"),
+  redis: Redis.fromEnv(),
+  limiter: Ratelimit.slidingWindow(10, "12 h"),
   /**
    * Optional prefix for the keys used in redis. This is useful if you want to share a redis
    * instance with other applications and want to avoid key collisions. The default prefix is

@@ -24,7 +24,6 @@ Presenting ( Yumeko ) 🤦🏻 – an anime character, That you can talk to usin
 - 🤖 Integrate Chatbot API with OpenAI.
 - 👄 Yumeko speaks using elevenlabs technology.
 - 🖼️ Chat markdown support: Links and Images.
-- 🗣️ Supports voice input, So you can talk to yumeko.
 - 🎙️ Speech-to-Text Realtime voice cloning.
 - 🌍 Speech transcript supports multiple languages.
 - 💾 Automatically saves chat history to localStorage.
@@ -77,9 +76,9 @@ It supported multiple 🌍 languages like:
 - French
 - Turkish
 
-also, It is recommended to open this app web with Google Chrome 🌐 since other browsers do not support speech recognition.
+It is recommended to open this app web with Google Chrome 🌐 since other browsers do not support speech recognition.
 
-> Speech recognition is not supported on 📱 mobile devices.
+> Note: Speech recognition is not supported on 📱 mobile devices.
 
 ## 💁🏻 How Can I help?
 

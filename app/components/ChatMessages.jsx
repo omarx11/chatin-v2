@@ -5,6 +5,8 @@ import { useContext, useEffect, useState } from "react";
 import { useCookies } from "next-client-cookies";
 import MarkdownLite from "./MarkdownLite";
 import dynamic from "next/dynamic";
+import { dateStyle } from "../lib/dateFormat";
+import { errorMsg } from "../data/errorMsg";
 
 const ChatMessages = () => {
   const { messages, isAudioMuted } = useContext(StatementContext);
@@ -18,6 +20,7 @@ const ChatMessages = () => {
     if (!isAudioStart) {
       audio.pause();
     } else if (!isAudioMuted) {
+      audio.volume = 0.5;
       audio.play();
     }
     audio.onended = () => {
@@ -39,7 +42,7 @@ const ChatMessages = () => {
           >
             <div
               className={cn(
-                "mx-2 flex max-w-md flex-col space-y-2 overflow-x-hidden text-sm font-medium",
+                "mx-2 flex max-w-md flex-col space-y-1 overflow-x-hidden text-sm font-medium",
                 {
                   "order-1 items-end": message.isUserMessage,
                   "order-2 items-start": !message.isUserMessage,
@@ -88,8 +91,21 @@ const ChatMessages = () => {
                     )}
                   </button>
                 )}
-                <MarkdownLite text={message.text} />
+                {message.text !== errorMsg.limit ? (
+                  <MarkdownLite text={message.text} />
+                ) : (
+                  <span className="font-bold text-rose-700">
+                    {message.text}
+                  </span>
+                )}
               </p>
+              {message.time &&
+                !message.isUserMessage &&
+                !message.isFirstMessage && (
+                  <span className="px-1 text-start text-xs text-neutral-400">
+                    {dateStyle(message.time)}
+                  </span>
+                )}
             </div>
           </div>
         );

@@ -22,7 +22,7 @@ export async function POST(req) {
   const payload = {
     model: "gpt-3.5-turbo",
     messages: outboundMessages,
-    temperature: 0.4,
+    temperature: 0.8,
     top_p: 1,
     frequency_penalty: 0,
     presence_penalty: 0,

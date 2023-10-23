@@ -1,6 +1,6 @@
 {
   "name": "chatin_app",
-  "version": "2.3.5",
+  "version": "2.3.6",
   "private": false,
   "scripts": {
     "dev": "next dev",
@@ -16,7 +16,7 @@
     "@tanstack/react-query": "^4.29.3",
     "@upstash/ratelimit": "^0.4.3",
     "@upstash/redis": "^1.22.0",
-    "autoprefixer": "^10.4.14",
+    "autoprefixer": "^10.4.16",
     "axios": "^1.4.0",
     "clsx": "^1.2.1",
     "eslint": "8.39.0",
@@ -25,9 +25,9 @@
     "framer-motion": "^10.15.0",
     "html-to-image": "^1.11.11",
     "nanoid": "^4.0.2",
-    "next": "^13.5.4",
+    "next": "^13.5.6",
     "next-client-cookies": "^1.0.5",
-    "postcss": "^8.4.23",
+    "postcss": "^8.4.31",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-speech-recognition": "^3.10.0",
@@ -41,7 +41,7 @@
   "devDependencies": {
     "encoding": "^0.1.13",
     "prettier": "^3.0.3",
-    "prettier-plugin-tailwindcss": "^0.5.5",
-    "sass": "^1.69.3"
+    "prettier-plugin-tailwindcss": "^0.5.6",
+    "sass": "^1.69.4"
   }
 }

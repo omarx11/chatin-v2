@@ -5,11 +5,12 @@ import { useIntersection } from "@mantine/hooks";
 import { cn } from "@/app/lib/utils";
 import MarkdownLite from "../components/MarkdownLite";
 import { Dropdown, Button } from "@nextui-org/react";
-import { filter } from "../lib/filterChat";
+import { filter } from "../lib/chatFilter";
 import Link from "next/link";
+import { dateStyle } from "../lib/dateFormat";
 
 // set how many data returned per call.
-const dataReq = 3;
+const dataReq = 2;
 
 export default function Pagination() {
   const [chatData, setChatData] = useState([]);
@@ -19,7 +20,6 @@ export default function Pagination() {
   const [isSorting, setIsSorting] = useState(false);
 
   const fetchData = async (page) => {
-    // TODO: Limit fetch length to 50.
     const res = await fetch("/api/conversations", {
       method: "POST",
       headers: {
@@ -91,7 +91,7 @@ export default function Pagination() {
 
   return (
     <div className="mx-2 flex w-full flex-col items-center sm:mx-0">
-      <div className="fade-in-history flex max-w-[96rem] flex-row flex-wrap justify-center gap-8">
+      <div className="fade-in-history flex max-w-7xl flex-row flex-wrap justify-center gap-8">
         <div className="mb-8 flex w-full flex-col items-center text-start">
           <div className="max-w-max">
             <h1 className="text-4xl">
@@ -164,12 +164,11 @@ export default function Pagination() {
           ) : (
             <div
               ref={ref}
-              className="no-scroll-style group flex h-[36rem] max-w-[30rem] flex-col gap-3 overflow-x-hidden rounded-md bg-purple-950 from-purple-950 via-purple-900 to-purple-950 py-3 pb-3 ring-4 ring-violet-900 hover:bg-gradient-to-r hover:pt-0 hover:ring-violet-900/75"
+              className="no-scroll-style group flex h-[36rem] max-w-[30rem] flex-col gap-3 overflow-x-hidden rounded-md bg-purple-950 from-purple-950 via-purple-900 to-purple-950 pb-3 ring-4 ring-violet-900 hover:bg-gradient-to-r hover:ring-violet-900/75"
               key={i}
             >
-              <div className="absolute top-0 -mx-3 rounded-md bg-gray-900/75 py-2 text-sm opacity-0 group-hover:sticky group-hover:opacity-100">
+              <div className="sticky top-0 -mx-3 rounded-md bg-gray-900/75 py-3 text-sm">
                 <div className="flex flex-col text-center">
-                  <span className="">{`[ ${user.id} ]`}</span>
                   <span>{user.user_uuid}</span>
                 </div>
               </div>
@@ -184,7 +183,7 @@ export default function Pagination() {
                     >
                       <div
                         className={cn(
-                          "mx-3 flex max-w-sm flex-col overflow-x-hidden text-sm font-medium",
+                          "mx-3 flex max-w-sm flex-col space-y-0.5 overflow-x-hidden text-sm font-medium",
                           {
                             "order-1 ml-14 items-end": message.isUserMessage,
                             "order-2 mr-14 items-start": !message.isUserMessage,
@@ -206,9 +205,9 @@ export default function Pagination() {
                             }
                           />
                         </p>
-                        {!message.isUserMessage && (
-                          <span className="pl-1 text-xs lowercase text-neutral-400">
-                            by {`[ ${message.ai_voise_name} ]`}
+                        {message.time && !message.isUserMessage && (
+                          <span className="px-1 text-start text-xs text-neutral-400">
+                            {dateStyle(message.time)}
                           </span>
                         )}
                       </div>

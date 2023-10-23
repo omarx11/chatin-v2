@@ -10,6 +10,7 @@ import BrowserSupports from "./BrowserSupports";
 import { getSubscriptionInfo } from "../lib/elevenlabs";
 import { nanoid } from "nanoid";
 import { Dropdown } from "@nextui-org/react";
+import { errorMsg } from "../data/errorMsg";
 
 const ChatSpeech = () => {
   const defaultLang = "en-US";
@@ -24,6 +25,7 @@ const ChatSpeech = () => {
   const { transcript, listening, resetTranscript } = useSpeechRecognition();
   const {
     messages,
+    textareaRef,
     addMessage,
     removeMessage,
     updateMessage,
@@ -38,7 +40,11 @@ const ChatSpeech = () => {
   } = useContext(StatementContext);
 
   async function doAudio() {
-    if (transcript !== "" && !isAudioMuted) {
+    if (
+      transcript !== "" &&
+      !isAudioMuted &&
+      messages.at(-1).text !== errorMsg.limit
+    ) {
       setIsLoading(true);
       setChatStatus("loading-audio");
       try {
@@ -70,6 +76,11 @@ const ChatSpeech = () => {
 
         setChatStatus(null);
         setIsLoading(false);
+
+        setTimeout(() => {
+          textareaRef.current?.focus();
+        }, 10);
+
         setSubscriptionInfo(await getSubscriptionInfo());
       } catch {
         setChatStatus("Error");
@@ -101,24 +112,26 @@ const ChatSpeech = () => {
     onSuccess: async (stream) => {
       if (!stream) throw new Error("No stream");
 
+      const reader = stream.getReader();
+      const decoder = new TextDecoder();
+      let done = false;
+
+      setChatStatus(null);
+      setIsLoading(false);
+
       // construct new message to add
       const id = nanoid();
       const responseMessage = {
         id,
         isUserMessage: false,
         text: "",
+        time: Date.now(),
         ai_voise_id: aiVoiseId,
         ai_voise_name: aiVoiseName,
       };
 
       // add new message to state
-      setChatStatus(null);
-      setIsLoading(false);
       addMessage(responseMessage);
-
-      const reader = stream.getReader();
-      const decoder = new TextDecoder();
-      let done = false;
 
       while (!done) {
         const { value, done: doneReading } = await reader.read();
@@ -127,10 +140,16 @@ const ChatSpeech = () => {
         updateMessage(id, (prev) => prev + chunkValue);
       }
 
+      // clean up
       setMutationIsDone(true);
+
+      setTimeout(() => {
+        textareaRef.current?.focus();
+      }, 10);
     },
     onError: (_, message) => {
       removeMessage(message.id);
+      textareaRef.current?.focus();
     },
   });
 
@@ -141,7 +160,7 @@ const ChatSpeech = () => {
       if (mutationIsDone === true) {
         await doAudio();
 
-        if (messages.length > 1)
+        if (messages.length > 1 && messages.at(-1).text !== errorMsg.limit)
           setTimeout(
             () =>
               typeof window !== "undefined" &&
@@ -165,7 +184,11 @@ const ChatSpeech = () => {
   // this for the ChatInput
   useEffect(() => {
     (async () => {
-      if (isMessageUpdating === true && !isAudioMuted) {
+      if (
+        isMessageUpdating === true &&
+        !isAudioMuted &&
+        messages.at(-1).text !== errorMsg.limit
+      ) {
         setIsLoading(true);
         setChatStatus("loading-audio");
         try {
@@ -197,6 +220,11 @@ const ChatSpeech = () => {
 
           setChatStatus(null);
           setIsLoading(false);
+
+          setTimeout(() => {
+            textareaRef.current?.focus();
+          }, 10);
+
           setSubscriptionInfo(await getSubscriptionInfo());
         } catch {
           setChatStatus("Error");
@@ -219,6 +247,7 @@ const ChatSpeech = () => {
         id: nanoid(),
         isUserMessage: true,
         text: transcript,
+        time: Date.now(),
       };
       sendMessage(message);
     }

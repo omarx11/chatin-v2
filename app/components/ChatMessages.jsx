@@ -1,33 +1,16 @@
 "use client";
 import { StatementContext } from "@/app/context/statement";
 import { cn } from "@/app/lib/utils";
-import { useContext, useEffect, useState } from "react";
-import { useCookies } from "next-client-cookies";
+import { useContext } from "react";
 import MarkdownLite from "./MarkdownLite";
 import dynamic from "next/dynamic";
 import { dateStyle } from "../lib/dateFormat";
 import { errorMsg } from "../data/errorMsg";
+import YumekoWelcome from "./YumekoWelcome";
 
 const ChatMessages = () => {
-  const { messages, isAudioMuted } = useContext(StatementContext);
-  const [isAudioStart, setIsAudioStart] = useState(false);
+  const { messages, uuidCookie } = useContext(StatementContext);
   const inverseMessages = [...messages].reverse();
-
-  const cookies = useCookies();
-
-  useEffect(() => {
-    const audio = document.getElementById("identify");
-    if (!isAudioStart) {
-      audio.pause();
-    } else if (!isAudioMuted) {
-      audio.volume = 0.5;
-      audio.play();
-    }
-    audio.onended = () => {
-      setIsAudioStart(false);
-      audio.currentTime = 0;
-    };
-  }, [isAudioStart]);
 
   return (
     <div className="fade-in msg-scroll flex flex-1 flex-col-reverse gap-3 overflow-y-auto rounded-lg px-0 py-3 md:px-2">
@@ -50,47 +33,11 @@ const ChatMessages = () => {
               )}
             >
               <p
-                className={cn("rounded-lg px-2 py-2 md:px-4", {
+                className={cn("rounded-lg px-2 py-2 sm:px-4", {
                   "bg-cyan-600 text-white": message.isUserMessage,
                   "bg-neutral-200 text-neutral-900": !message.isUserMessage,
-                  "flex items-center gap-2 md:pl-2": message.isFirstMessage,
                 })}
               >
-                {message.isFirstMessage && (
-                  <button
-                    className="rounded-full bg-neutral-300 p-1 hover:bg-neutral-400"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      isAudioStart
-                        ? setIsAudioStart(false)
-                        : setIsAudioStart(true);
-                    }}
-                  >
-                    {isAudioStart ? (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          fill="currentColor"
-                          d="M14 19V5h4v14h-4Zm-8 0V5h4v14H6Z"
-                        />
-                      </svg>
-                    ) : (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"></path>
-                      </svg>
-                    )}
-                  </button>
-                )}
                 {message.text !== errorMsg.limit ? (
                   <MarkdownLite text={message.text} />
                 ) : (
@@ -99,25 +46,24 @@ const ChatMessages = () => {
                   </span>
                 )}
               </p>
-              {message.time &&
-                !message.isUserMessage &&
-                !message.isFirstMessage && (
-                  <span className="px-1 text-start text-xs text-neutral-400">
-                    {dateStyle(message.time)}
-                  </span>
-                )}
+              {message.time && !message.isUserMessage && (
+                <span className="px-1 text-start text-xs text-neutral-400">
+                  {dateStyle(message.time)}
+                </span>
+              )}
             </div>
           </div>
         );
       })}
+      <YumekoWelcome />
       <audio
         src="/static/audio/identify.webm"
         id="identify"
         className="hidden"
         preload="none"
       ></audio>
-      <p className="border-b border-neutral-600 pb-2 text-center text-sm text-neutral-200">
-        ID: {cookies.get("uuid") ?? "anonymous"}
+      <p className="border-b border-violet-600 pb-2 text-center text-sm text-neutral-200">
+        ID: {uuidCookie ?? "anonymous"}
       </p>
     </div>
   );

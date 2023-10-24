@@ -3,9 +3,10 @@ import { StatementContext } from "@/app/context/statement";
 import { useContext, useEffect, useState } from "react";
 import { Tooltip } from "@nextui-org/react";
 import { toPng } from "html-to-image";
+import { hasCookie, deleteCookie, getCookie, setCookie } from "cookies-next";
+import { v4 as uuidv4 } from "uuid";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { removeCookie } from "@/app/lib/cookies";
 import { errorMsg } from "../data/errorMsg";
 
 const ChatSettings = () => {
@@ -16,6 +17,7 @@ const ChatSettings = () => {
     isAudioMuted,
     setIsAudioMuted,
     isMessageUpdating,
+    setUuidCookie,
   } = useContext(StatementContext);
 
   // On development mode you can comment this if you don't want chat to save.
@@ -54,10 +56,16 @@ const ChatSettings = () => {
     isAudioMuted ? setIsAudioMuted(false) : setIsAudioMuted(true);
   };
 
-  const handleChatStorage = (e) => {
+  const handleChatStorage = async (e) => {
     e.preventDefault();
     removeAllMessages();
-    removeCookie("uuid");
+    deleteCookie("uuid");
+    if (!hasCookie("uuid")) {
+      setCookie("uuid", uuidv4(), {
+        maxAge: 10 * 365 * 24 * 60 * 60,
+      });
+      setUuidCookie(getCookie("uuid"));
+    }
   };
 
   const handleScreenShoot = (e) => {
@@ -284,6 +292,165 @@ const ChatSettings = () => {
         </Link>
       </Tooltip>
     </div>
+  );
+};
+
+// chat settings for mobile devices
+export const MobileSettings = () => {
+  const {
+    removeAllMessages,
+    messages,
+    isAudioMuted,
+    setIsAudioMuted,
+    isMessageUpdating,
+    setUuidCookie,
+  } = useContext(StatementContext);
+
+  const handleAudio = (e) => {
+    e.preventDefault();
+    const audio = document.getElementById("identify");
+    if (audio) {
+      audio.pause();
+      audio.currentTime = 0;
+    }
+    isAudioMuted ? setIsAudioMuted(false) : setIsAudioMuted(true);
+  };
+
+  const handleChatStorage = async (e) => {
+    e.preventDefault();
+    removeAllMessages();
+    deleteCookie("uuid");
+    if (!hasCookie("uuid")) {
+      setCookie("uuid", uuidv4(), {
+        maxAge: 10 * 365 * 24 * 60 * 60,
+      });
+      setUuidCookie(getCookie("uuid"));
+    }
+  };
+
+  return (
+    <>
+      <Tooltip
+        content={
+          <span className="whitespace-nowrap">mute yumeko from talking</span>
+        }
+        offset={4}
+        color="secondary"
+        placement="topEnd"
+        className="rounded-md"
+        hideArrow
+      >
+        <button
+          className="rounded-md bg-violet-800 p-1.5 hover:bg-violet-900"
+          onClick={handleAudio}
+        >
+          {isAudioMuted ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="rgb(251 113 133)"
+                d="M12 4L9.91 6.09L12 8.18M4.27 3L3 4.27L7.73 9H3v6h4l5 5v-6.73l4.25 4.26c-.67.51-1.42.93-2.25 1.17v2.07c1.38-.32 2.63-.95 3.68-1.81L19.73 21L21 19.73l-9-9M19 12c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.916 8.916 0 0 0 21 12c0-4.28-3-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71m-2.5 0c0-1.77-1-3.29-2.5-4.03v2.21l2.45 2.45c.05-.2.05-.42.05-.63Z"
+              />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="#eee"
+                d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.84 14,18.7V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16C15.5,15.29 16.5,13.76 16.5,12M3,9V15H7L12,20V4L7,9H3Z"
+              />
+            </svg>
+          )}
+        </button>
+      </Tooltip>
+      <Tooltip
+        content={<span className="whitespace-nowrap">clear chat history</span>}
+        offset={4}
+        color="secondary"
+        placement="topEnd"
+        className="rounded-md"
+        hideArrow
+      >
+        <button
+          className="rounded-md bg-violet-800 p-1.5 hover:bg-violet-900"
+          onClick={handleChatStorage}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="#eee"
+              d="M7 21q-.825 0-1.413-.588T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.588 1.413T17 21H7Zm2-4h2V8H9v9Zm4 0h2V8h-2v9Z"
+            />
+          </svg>
+        </button>
+      </Tooltip>
+      <Tooltip
+        content={
+          <span className="whitespace-nowrap">support me at ko-fi.com</span>
+        }
+        offset={4}
+        color="secondary"
+        placement="topEnd"
+        className="rounded-md"
+        hideArrow
+      >
+        <Link
+          href="https://ko-fi.com/omar11"
+          target="_blank"
+          className="rounded-md"
+        >
+          <button className="rounded-md bg-violet-800 p-1.5 hover:bg-violet-900">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              viewBox="0 -1 24 24"
+            >
+              <path
+                fill="#eee"
+                d="M16.5 3A5.49 5.49 0 0 0 12 5.344A5.49 5.49 0 0 0 7.5 3A5.5 5.5 0 0 0 2 8.5c0 5.719 6.5 10.438 10 12.85c3.5-2.412 10-7.131 10-12.85A5.5 5.5 0 0 0 16.5 3z"
+              />
+            </svg>
+          </button>
+        </Link>
+      </Tooltip>
+      <Tooltip
+        content={<span className="whitespace-nowrap">chatin database</span>}
+        offset={4}
+        color="secondary"
+        placement="topEnd"
+        className="rounded-md"
+        hideArrow
+      >
+        <Link href="./history" target="_self" className="rounded-md">
+          <button className="rounded-md bg-violet-800 p-1.5 hover:bg-violet-900">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="#eee"
+                d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8c1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10Z"
+              />
+            </svg>
+          </button>
+        </Link>
+      </Tooltip>
+    </>
   );
 };
 

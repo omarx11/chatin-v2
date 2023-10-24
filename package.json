@@ -1,6 +1,6 @@
 {
   "name": "chatin_app",
-  "version": "2.3.6",
+  "version": "2.3.7",
   "private": false,
   "scripts": {
     "dev": "next dev",
@@ -19,6 +19,7 @@
     "autoprefixer": "^10.4.16",
     "axios": "^1.4.0",
     "clsx": "^1.2.1",
+    "cookies-next": "^4.0.0",
     "eslint": "8.39.0",
     "eslint-config-next": "^13.4.7",
     "eventsource-parser": "^1.0.0",
@@ -26,7 +27,6 @@
     "html-to-image": "^1.11.11",
     "nanoid": "^4.0.2",
     "next": "^13.5.6",
-    "next-client-cookies": "^1.0.5",
     "postcss": "^8.4.31",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -11,6 +11,7 @@ import { getSubscriptionInfo } from "../lib/elevenlabs";
 import { nanoid } from "nanoid";
 import { Dropdown } from "@nextui-org/react";
 import { errorMsg } from "../data/errorMsg";
+import { MobileSettings } from "./ChatSettings";
 
 const ChatSpeech = () => {
   const defaultLang = "en-US";
@@ -290,8 +291,8 @@ const ChatSpeech = () => {
   }
 
   return (
-    <div className="mb-4 mt-4 rounded-lg bg-violet-950 p-2 shadow-md shadow-violet-500/50 ring-4 ring-violet-900/40 sm:mt-8">
-      <div className="flex flex-row flex-wrap justify-center sm:justify-between">
+    <div className="mb-4 mt-4 rounded-lg bg-violet-950 px-2 py-3 shadow-md shadow-violet-500/50 ring-4 ring-violet-900/40 sm:mt-8 sm:py-2">
+      <div className="flex flex-row flex-wrap justify-between gap-2">
         <div className="flex flex-row flex-wrap items-center gap-2">
           <button
             className="hidden cursor-pointer flex-row gap-0.5 rounded-md border-none bg-green-700 px-2 py-2 text-sm hover:bg-green-700/50 focus:outline-none focus:ring-4 focus:ring-blue-600 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-green-700 sm:inline-flex"
@@ -326,102 +327,112 @@ const ChatSpeech = () => {
             </svg>{" "}
             Stop
           </button>
-          <Dropdown disableAnimation>
-            <Dropdown.Button
-              auto
-              color="secondary"
-              css={{
-                tt: "capitalize",
-                size: "30px",
-                borderRadius: "4px",
-                fontSize: "$xs",
-                marginLeft: "$4",
-              }}
-            >
-              {selectedLanguage?.currentKey ?? defaultLang}
-            </Dropdown.Button>
-            <Dropdown.Menu
-              color="secondary"
-              disallowEmptySelection
-              selectionMode="single"
-              selectedKeys={selectedLanguage}
-              onSelectionChange={setSelectedLanguage}
-            >
-              <Dropdown.Section
-                title={dsTitle(
-                  "( Select Speech Language )",
-                  "works with speech transcript.",
-                )}
+          <div className="flex flex-row-reverse">
+            <Dropdown disableAnimation>
+              <Dropdown.Button
+                auto
+                color="secondary"
+                css={{
+                  tt: "capitalize",
+                  size: "30px",
+                  borderRadius: "4px",
+                  fontSize: "$xs",
+                  marginLeft: "$4",
+                  backgroundColor: "rgb(91, 33, 182)",
+                  "@xsMax": {
+                    display: "none",
+                  },
+                }}
               >
-                <Dropdown.Item key="en-US">English (US)</Dropdown.Item>
-                <Dropdown.Item key="ar-SA">Arabic (SA)</Dropdown.Item>
-                <Dropdown.Item key="ja">Japanese</Dropdown.Item>
-                <Dropdown.Item key="ko">Korean</Dropdown.Item>
-                <Dropdown.Item key="ru">Russian</Dropdown.Item>
-                <Dropdown.Item key="de-DE">German</Dropdown.Item>
-                <Dropdown.Item key="fr-FR">French</Dropdown.Item>
-                <Dropdown.Item key="tr">Turkish</Dropdown.Item>
-              </Dropdown.Section>
-            </Dropdown.Menu>
-          </Dropdown>
-          <Dropdown disableAnimation>
-            <Dropdown.Button
-              auto
-              color="secondary"
-              css={{
-                tt: "capitalize",
-                size: "30px",
-                borderRadius: "4px",
-                fontSize: "$xs",
-                marginLeft: "$4",
-              }}
-            >
-              {voiseName}
-            </Dropdown.Button>
-            <Dropdown.Menu
-              color="secondary"
-              disallowEmptySelection
-              selectionMode="single"
-              selectedKeys={selectedVoise}
-              onSelectionChange={setSelectedVoise}
-            >
-              <Dropdown.Section
-                title={dsTitle(
-                  "( Select AI Speak Voice )",
-                  "this only effict to the sound output and not inclouding charecters.",
-                )}
+                {selectedLanguage?.currentKey ?? defaultLang}
+              </Dropdown.Button>
+              <Dropdown.Menu
+                color="secondary"
+                disallowEmptySelection
+                selectionMode="single"
+                selectedKeys={selectedLanguage}
+                onSelectionChange={setSelectedLanguage}
               >
-                <Dropdown.Item key="AZnzlk1XvdvUeBnXmlld">
-                  Yumeko (default)
-                </Dropdown.Item>
-                <Dropdown.Item key="EXAVITQu4vr4xnSDxMaL">
-                  Bella \ Nice Person
-                </Dropdown.Item>
-                <Dropdown.Item key="g5CIjZEefAph4nQFvHAz">
-                  A Serial Killer?
-                </Dropdown.Item>
-                <Dropdown.Item key="MF3mGyEYCl7XYWbV9V6O">
-                  Elli Is Enthusiastic
-                </Dropdown.Item>
-                <Dropdown.Item key="jBpfuIE2acCO8z3wKNLl">
-                  Gigi Annoying (child)
-                </Dropdown.Item>
-                <Dropdown.Item key="jsCqWAovK2LkecY7zXl4">
-                  Average American Girl
-                </Dropdown.Item>
-                <Dropdown.Item key="GBv7mTt0atIp3Br8iCZE">
-                  Bloodthirsty
-                </Dropdown.Item>
-              </Dropdown.Section>
-            </Dropdown.Menu>
-          </Dropdown>
+                <Dropdown.Section
+                  title={dsTitle(
+                    "( Select Speech Language )",
+                    "works with speech transcript.",
+                  )}
+                >
+                  <Dropdown.Item key="en-US">English (US)</Dropdown.Item>
+                  <Dropdown.Item key="ar-SA">Arabic (SA)</Dropdown.Item>
+                  <Dropdown.Item key="ja">Japanese</Dropdown.Item>
+                  <Dropdown.Item key="ko">Korean</Dropdown.Item>
+                  <Dropdown.Item key="ru">Russian</Dropdown.Item>
+                  <Dropdown.Item key="de-DE">German</Dropdown.Item>
+                  <Dropdown.Item key="fr-FR">French</Dropdown.Item>
+                  <Dropdown.Item key="tr">Turkish</Dropdown.Item>
+                </Dropdown.Section>
+              </Dropdown.Menu>
+            </Dropdown>
+            <Dropdown disableAnimation>
+              <Dropdown.Button
+                auto
+                color="secondary"
+                className="ml-0 sm:ml-2"
+                css={{
+                  tt: "capitalize",
+                  size: "30px",
+                  borderRadius: "4px",
+                  fontSize: "$xs",
+                  backgroundColor: "rgb(91, 33, 182)",
+                }}
+              >
+                {voiseName}
+              </Dropdown.Button>
+              <Dropdown.Menu
+                color="secondary"
+                disallowEmptySelection
+                selectionMode="single"
+                selectedKeys={selectedVoise}
+                onSelectionChange={setSelectedVoise}
+              >
+                <Dropdown.Section
+                  title={dsTitle(
+                    "( Select AI Speak Voice )",
+                    "this only effict to the sound output and not inclouding charecters.",
+                  )}
+                >
+                  <Dropdown.Item key="AZnzlk1XvdvUeBnXmlld">
+                    Yumeko (default)
+                  </Dropdown.Item>
+                  <Dropdown.Item key="EXAVITQu4vr4xnSDxMaL">
+                    Bella \ Nice Person
+                  </Dropdown.Item>
+                  <Dropdown.Item key="g5CIjZEefAph4nQFvHAz">
+                    A Serial Killer?
+                  </Dropdown.Item>
+                  <Dropdown.Item key="MF3mGyEYCl7XYWbV9V6O">
+                    Elli Is Enthusiastic
+                  </Dropdown.Item>
+                  <Dropdown.Item key="jBpfuIE2acCO8z3wKNLl">
+                    Gigi Annoying (child)
+                  </Dropdown.Item>
+                  <Dropdown.Item key="jsCqWAovK2LkecY7zXl4">
+                    Average American Girl
+                  </Dropdown.Item>
+                  <Dropdown.Item key="GBv7mTt0atIp3Br8iCZE">
+                    Bloodthirsty
+                  </Dropdown.Item>
+                </Dropdown.Section>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
         </div>
         <span className="hidden text-right text-neutral-300 sm:block">
           Transcript ({transcript.length}/1000)
         </span>
+        <div className="flex gap-3 sm:hidden">
+          <MobileSettings />
+        </div>
       </div>
 
-      <pre className="mt-3 hidden min-h-[48px] rounded-sm border-4 border-dashed border-violet-400 bg-violet-800 p-2 sm:block">
+      <pre className="mt-3 hidden min-h-[48px] rounded-sm border-4 border-dashed border-violet-700 bg-violet-900 p-2 sm:block">
         <BrowserSupports />
       </pre>
       <div className="hidden justify-end pt-1 text-xs text-neutral-400 sm:flex">

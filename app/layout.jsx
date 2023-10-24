@@ -1,6 +1,7 @@
 import "./globals.scss";
 import { Recursive } from "next/font/google";
 import Providers from "@/app/components/Providers";
+import { Analytics } from "@vercel/analytics/react";
 import { meta } from "./data/config";
 
 const recursive = Recursive({ subsets: ["latin"] });
@@ -50,9 +51,10 @@ export default function RootLayout({ children }) {
       className="tracking min-h-screen overflow-x-hidden scroll-smooth antialiased"
     >
       <body
-        className={`${recursive.className} flex min-h-screen flex-row items-start justify-center bg-slate-900 pt-6 md:pt-20`}
+        className={`${recursive.className} flex min-h-screen flex-row items-start justify-center bg-slate-900 pt-6 sm:pt-20`}
       >
         <Providers>{children}</Providers>
+        <Analytics />
       </body>
     </html>
   );

@@ -297,14 +297,8 @@ const ChatSettings = () => {
 
 // chat settings for mobile devices
 export const MobileSettings = () => {
-  const {
-    removeAllMessages,
-    messages,
-    isAudioMuted,
-    setIsAudioMuted,
-    isMessageUpdating,
-    setUuidCookie,
-  } = useContext(StatementContext);
+  const { removeAllMessages, isAudioMuted, setIsAudioMuted, setUuidCookie } =
+    useContext(StatementContext);
 
   const handleAudio = (e) => {
     e.preventDefault();

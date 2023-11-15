@@ -161,7 +161,7 @@ const ChatSpeech = () => {
       if (mutationIsDone === true) {
         await doAudio();
 
-        if (messages.length > 1 && messages.at(-1).text !== errorMsg.limit)
+        if (messages.length > 1 && messages.at(-1).text !== errorMsg.limit) {
           setTimeout(
             () =>
               typeof window !== "undefined" &&
@@ -169,14 +169,15 @@ const ChatSpeech = () => {
             200,
           );
 
-        fetch("/api/supabase", {
-          method: "POST",
-          body: JSON.stringify({
-            data: {
-              messages,
-            },
-          }),
-        });
+          fetch("/api/supabase", {
+            method: "POST",
+            body: JSON.stringify({
+              data: {
+                messages,
+              },
+            }),
+          });
+        }
       }
       setMutationIsDone(false);
     })();
@@ -356,7 +357,7 @@ const ChatSpeech = () => {
                 <Dropdown.Section
                   title={dsTitle(
                     "( Select Speech Language )",
-                    "works with speech transcript.",
+                    "works with speech transcript only.",
                   )}
                 >
                   <Dropdown.Item key="en-US">English (US)</Dropdown.Item>

@@ -62,8 +62,8 @@ const ChatMessages = () => {
         className="hidden"
         preload="none"
       ></audio>
-      <p className="border-b border-violet-600 pb-2 text-center text-sm text-neutral-200">
-        ID: {uuidCookie ?? "anonymous"}
+      <p className="border-b border-violet-600 pb-2 text-center text-sm text-neutral-200 duration-300">
+        Id: {uuidCookie ?? "anonymous"}
       </p>
     </div>
   );

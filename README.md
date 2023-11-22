@@ -1,6 +1,6 @@
 <div align="center">
 
-# Chatin 🌟 [link](https://chatin2.vercel.app/)
+# Chatin 🌟 [web](https://chatin2.vercel.app/)
 
 </div>
 

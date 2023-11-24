@@ -10,7 +10,7 @@ import Link from "next/link";
 import { dateStyle } from "../lib/dateFormat";
 
 // set how many data returned per call.
-const dataReq = 2;
+const dataReq = 4;
 
 export default function Pagination() {
   const [chatData, setChatData] = useState([]);

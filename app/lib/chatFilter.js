@@ -1,15 +1,18 @@
-// filter bad words from chat conversation
-export function filter(chat) {
-  // TODO: add more words..
-  const cusswords = ["sex", "fuck", "dick", "كس", "زانية", "pussy"];
-  var chat;
-  for (let i = 0; i < cusswords.length; i++) {
-    const length = String(cusswords[i]).length;
-    let characters = "";
-    for (let u = 0; u < length; u++) {
-      characters = String(characters) + String("*");
-    }
-    chat = chat.replace(String(cusswords[i]), String(characters));
-  }
-  return chat;
+export function filter(message) {
+  const badWords = {
+    en: ["fuck", "sex", "dick", "pussy"],
+    ar: ["كس", "زانية"],
+    // Add more languages and their bad words as needed
+  };
+
+  let filteredMessage = message;
+
+  Object.values(badWords).forEach((words) => {
+    words.forEach((word) => {
+      const replacement = "*".repeat(word.length);
+      filteredMessage = filteredMessage.split(word).join(replacement);
+    });
+  });
+
+  return filteredMessage;
 }

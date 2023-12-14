@@ -4,7 +4,7 @@ import Providers from "@/app/components/Providers";
 import { Analytics } from "@vercel/analytics/react";
 import { meta } from "./data/config";
 
-const recursive = Recursive({ subsets: ["latin"] });
+const recursive = Recursive({ subsets: ["latin"], display: "swap" });
 
 export const metadata = {
   metadataBase: new URL(meta.siteUrl),
@@ -51,7 +51,7 @@ export default function RootLayout({ children }) {
       className="tracking min-h-screen overflow-x-hidden scroll-smooth antialiased"
     >
       <body
-        className={`${recursive.className} flex min-h-screen flex-row items-start justify-center bg-slate-900 pt-6 sm:pt-20`}
+        className={`${recursive.className} flex min-h-screen flex-row items-start justify-center bg-slate-900 pt-6 text-white sm:pt-20`}
       >
         <Providers>{children}</Providers>
         <Analytics />

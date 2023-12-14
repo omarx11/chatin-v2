@@ -91,28 +91,28 @@ export default function Pagination() {
 
   return (
     <div className="mx-2 flex w-full flex-col items-center sm:mx-0">
-      <div className="fade-in-history flex max-w-7xl flex-row flex-wrap justify-center gap-8">
-        <div className="mb-8 flex w-full flex-col items-center text-start">
-          <div className="max-w-max">
-            <h1 className="text-4xl">
+      <div className="fade-in-history flex max-w-7xl flex-row flex-wrap justify-center gap-x-12 gap-y-8">
+        <div className="mb-2 flex w-full flex-col items-center text-start sm:mb-8">
+          <div className="max-w-max rounded-md bg-slate-800 p-8">
+            <h1 className="text-lg font-semibold sm:text-4xl">
               A list of all conversations by humans! ( Chatin App )
             </h1>
             <div className="mt-4 flex justify-between text-neutral-200">
               <p>
                 Total of <span className="text-violet-300">{chatLength}</span>{" "}
                 conversations..
-                <span className="block text-xs text-neutral-400">
-                  If you think you don't want your chat to appear here,{" "}
+                <span className="block text-xs text-slate-400">
+                  If you prefer your chat not to appear here, please{" "}
                   <Link
                     href="mailto:mail@omar11.sa"
-                    className="hover:underline"
+                    className="text-slate-300 hover:underline"
                   >
                     contact me
                   </Link>
                   .
                 </span>
               </p>
-              <div className="flex items-center gap-4">
+              <div className="flex flex-wrap items-start justify-end gap-1 sm:items-center sm:justify-start sm:gap-4">
                 <Dropdown disableAnimation>
                   <Dropdown.Button
                     auto
@@ -164,12 +164,12 @@ export default function Pagination() {
           ) : (
             <div
               ref={ref}
-              className="no-scroll-style group flex h-[36rem] max-w-[30rem] flex-col gap-3 overflow-x-hidden rounded-md bg-purple-950 from-purple-950 via-purple-900 to-purple-950 pb-3 ring-4 ring-violet-900 hover:bg-gradient-to-r hover:ring-violet-900/75"
+              className="no-scroll-style group flex h-[36rem] max-w-[30rem] flex-col gap-2 overflow-x-hidden rounded-sm bg-purple-950 from-purple-950 via-purple-900 to-purple-950 pb-3 ring-4 ring-violet-900 hover:bg-gradient-to-r hover:ring-violet-900/75 sm:gap-3 sm:rounded-md"
               key={i}
             >
-              <div className="sticky top-0 -mx-3 rounded-md bg-gray-900/75 py-3 text-sm">
+              <div className="sticky top-0 -mx-3 rounded-md bg-gray-900/75 py-3">
                 <div className="flex flex-col text-center">
-                  <span>{user.user_uuid}</span>
+                  <span className="text-xs sm:text-sm">{user.user_uuid}</span>
                 </div>
               </div>
               {JSON.parse(user["chat"]).map((message) => {
@@ -183,7 +183,7 @@ export default function Pagination() {
                     >
                       <div
                         className={cn(
-                          "mx-3 flex max-w-sm flex-col space-y-0.5 overflow-x-hidden text-sm font-medium",
+                          "mx-3 flex max-w-sm flex-col space-y-0.5 overflow-x-hidden font-medium",
                           {
                             "order-1 ml-14 items-end": message.isUserMessage,
                             "order-2 mr-14 items-start": !message.isUserMessage,
@@ -191,11 +191,14 @@ export default function Pagination() {
                         )}
                       >
                         <p
-                          className={cn("rounded-md px-2 py-2 md:px-4", {
-                            "bg-cyan-600 text-white": message.isUserMessage,
-                            "bg-neutral-200 text-neutral-900":
-                              !message.isUserMessage,
-                          })}
+                          className={cn(
+                            "rounded-md px-2 py-2 text-xs sm:text-sm md:px-4",
+                            {
+                              "bg-cyan-600 text-white": message.isUserMessage,
+                              "bg-neutral-200 text-neutral-900":
+                                !message.isUserMessage,
+                            },
+                          )}
                         >
                           <MarkdownLite
                             text={

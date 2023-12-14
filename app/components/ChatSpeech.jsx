@@ -259,9 +259,9 @@ const ChatSpeech = () => {
     const voiseId = selectedVoise?.currentKey ?? defaultVoise;
     const voises = {
       AZnzlk1XvdvUeBnXmlld: "Yumeko",
-      EXAVITQu4vr4xnSDxMaL: "Bella nice person",
+      EXAVITQu4vr4xnSDxMaL: "Bella",
       g5CIjZEefAph4nQFvHAz: "A Serial Killer?",
-      MF3mGyEYCl7XYWbV9V6O: "Elli is enthusiastic",
+      MF3mGyEYCl7XYWbV9V6O: "Elli",
       jBpfuIE2acCO8z3wKNLl: "Gigi a (Child)",
       jsCqWAovK2LkecY7zXl4: "American girl",
       GBv7mTt0atIp3Br8iCZE: "Bloodthirsty",

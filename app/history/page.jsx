@@ -5,7 +5,6 @@ import { meta } from "../data/config";
 export const metadata = {
   title: "History",
   description: `history of ${meta.description}`,
-  keywords: meta.keywords,
   openGraph: {
     title: "History",
     description: meta.description,

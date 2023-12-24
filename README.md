@@ -1,26 +1,22 @@
-<div align="center">
+# Chatin App 🕮 [On The Web](https://chatin2.vercel.app/)
 
-# Chatin 🌟 [web](https://chatin2.vercel.app/)
-
-</div>
-
-Presenting ( Yumeko ) 🤦🏻 – an anime character, That you can talk to using 🎙️ speech-to-text OR text-to-speech, Powered by OpenAI [ChatGPT](https://openai.com/) model gpt-3.5-turbo, to generate human-like text based on context, and [elevenlabs](https://elevenlabs.io/) API to generate high-quality spoken audio in any voice, style, and language.
-
-<div align="center">
-
-![Logo](https://raw.githubusercontent.com/omarx11/chatin-v2/main/public/icon-256x256.png)
+<img src="public/icon-192x192.png" width="160px" style="border-radius: 6px" alt="">
 
 <details> <summary> Play </summary>
 
-[yumeko-identify.webm](https://github.com/omarx11/chatin-v2/assets/87499333/2156d32d-0685-480c-adc1-4ca59d03484a)
+[yumeko-identify.webm](public/static/audio/identify.webm)
 
 </details>
 
-</div>
+Introducing **Yumiko** 🤦🏻 – a character with a bold and sassy personality you can engage with through speech-to-text 🎙️ or text-to-speech. Yumiko generates human-like text based on context, complemented by high-quality spoken audio in any voice, style, or language.
+
+### Why did you build this App?
+
+A great opportunity to enhance my programming skills and this app looks fun anyway 😂.
 
 ## 🌌 Features
 
-- 🚀 Next.js for fullstack framework javaScript.
+- 🚀 Next.js 14 for full-stack framework JavaScript.
 - 🤖 Integrate Chatbot API with OpenAI.
 - 👄 Yumeko speaks using elevenlabs technology.
 - 🖼️ Chat markdown support: Links and Images.
@@ -33,11 +29,11 @@ Presenting ( Yumeko ) 🤦🏻 – an anime character, That you can talk to usin
 
 ## 🛠️ Tech Stack
 
-Here's a rundown of the technologies and tools 📝 I've used to build this App:
+Here are the technologies and tools I've used to build this App:
 
 | Name       | Link                                         |
 | ---------- | -------------------------------------------- |
-| Framework  | [Next.js](https://nextjs.org/)               |
+| Framework  | [Next.js 14](https://nextjs.org/)            |
 | Database   | [Supabase](https://supabase.com/)            |
 | Deployment | [Vercel](https://vercel.com)                 |
 | Favicon    | [Iconify](https://icon-sets.iconify.design/) |
@@ -45,27 +41,25 @@ Here's a rundown of the technologies and tools 📝 I've used to build this App:
 
 ## 📷 Screenshots
 
-<div align="center">
+![](public/static/images/github/Screenshot-1.png)
 
-<img src="https://github.com/omarx11/chatin-v2/assets/87499333/efef6638-d16d-4938-8138-bbd53ad21558" style="width:80%; margin-bottom: 20px" />
+![](public/static/images/github/Screenshot-2.png)
 
-<img src="https://github.com/omarx11/chatin-v2/assets/87499333/aaee704d-2081-4b40-9d88-00375044066c" style="width:80%; margin-bottom: 20px" />
-
-<img src="https://github.com/omarx11/chatin-v2/assets/87499333/da928d75-e239-4ce9-b064-2195ead479d1" style="width:80%" />
-
-</div>
+![](public/static/images/github/chatin-gif.gif)
 
 ## 📡 Project Deployment
 
-This app is hosted and deployed in Vercel for many futures to get the best user-end performance like > automatic scaling, easy integration with git, easy configuration, and more..
+This app is hosted and deployed on Vercel, providing an intuitive platform with Git integration, serverless functions, and secure environment management. It ensures seamless collaboration, automatic HTTPS, and robust analytics for optimal web development.
 
-> #### [( Chatin Website Page )](https://chatin2.vercel.app/)
+[https://chatin2.vercel.app/](https://chatin2.vercel.app/)
+
+> Note: you are limited to **15** messages per **12** hours to avoid prevent abuse.
 
 ## 🎙️ Speech Recognition
 
-In this app, i use Speech Recognition and it's an npm package called [react-speech-recognition](https://www.npmjs.com/package/react-speech-recognition) that can activate the microphone and turn the user's speech into text that it can process to ChatGPT.
+I implement Speech Recognition using the npm package [react-speech-recognition](https://www.npmjs.com/package/react-speech-recognition). This package activates the microphone, converting the user's speech into text for processing by ChatGPT.
 
-It supported multiple 🌍 languages like:
+It supports multiple 🌍 languages, including:
 
 - English
 - Arabic
@@ -76,7 +70,7 @@ It supported multiple 🌍 languages like:
 - French
 - Turkish
 
-It is recommended to open this app web with Google Chrome 🌐 since other browsers do not support speech recognition.
+For optimal performance, it is recommended to access this web app using Google Chrome 🌐, as other browsers may not fully support speech recognition.
 
 > Note: Speech recognition is not supported on 📱 mobile devices.
 
@@ -92,7 +86,7 @@ Give a ⭐️ if this project helped you!
 
 ## 🤍 Support me
 
-Your support will help me improve this project, and pay my API bills, and it will help me also keep this App running at its best, Thank you anyway for visiting my GitHub repo 💖
+Your assistance is invaluable in enhancing and maintaining this project. Your support contributes to covering API costs and ensures the continued optimal performance of this app. Thank you sincerely for visiting my GitHub repository 💖.
 
 [Sponsoring on GitHub](https://github.com/sponsors/omarx11)
 

@@ -57,7 +57,7 @@ const ChatMessages = () => {
       })}
       <YumekoWelcome />
       <audio
-        src="/static/audio/identify.webm"
+        src="/static/audio/identify.mp3"
         id="identify"
         className="hidden"
         preload="none"

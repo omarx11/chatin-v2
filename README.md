@@ -1,18 +1,20 @@
-# Chatin App 🕮 [On The Web](https://chatin2.vercel.app/)
+# Chatin 🕮 App
 
 <img src="public/icon-192x192.png" width="160px" style="border-radius: 6px" alt="">
 
-<details> <summary> Play </summary>
+<details> <summary> Play test </summary>
 
-[yumeko-identify.webm](public/static/audio/identify.webm)
+> **Yumiko** introduces herself in English and Arabic ..
+
+<audio src="public/static/audio/identify.mp3" controls title="Title"></audio>
 
 </details>
 
 Introducing **Yumiko** 🤦🏻 – a character with a bold and sassy personality you can engage with through speech-to-text 🎙️ or text-to-speech. Yumiko generates human-like text based on context, complemented by high-quality spoken audio in any voice, style, or language.
 
-### Why did you build this App?
+### Why i build this App?
 
-A great opportunity to enhance my programming skills and this app looks fun anyway 😂.
+A great opportunity to enhance my programming skills and this app looks fun anyway 😂
 
 ## 🌌 Features
 

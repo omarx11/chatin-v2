@@ -2,12 +2,10 @@
 
 <img src="public/icon-192x192.png" width="160px" style="border-radius: 6px" alt="">
 
-Introducing **Yumiko** 🤦🏻 – a character with a bold and sassy personality you can engage with through speech-to-text 🎙️ or text-to-speech. Yumiko generates human-like text based on context, complemented by high-quality spoken audio in any voice, style, or language.
+Introducing **Rawan** 🤦🏻 – a character with a rude personality. You can engage with her through speech-to-text 🎙️ or text-to-speech.
 
 <details> <summary> Play </summary>
 <i>
-
-Yumiko introduces herself in English and Arabic ...
 
 > Don't forget to unmute the player!
 

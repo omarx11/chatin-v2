@@ -4,7 +4,7 @@ export const meta = {
   title: "Chatin",
   description: "Chatin App",
   descriptionFull:
-    "Talk to Rawan (anime girl) with your voice, And she will respond back to you with speech recognition. (No sign-in required!)",
+    "Talk to Rawan voice-to-voice using speech recognition or text-to-speech.",
   keywords: [
     "Chitin",
     "ChatGPT AI",

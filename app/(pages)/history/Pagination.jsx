@@ -183,7 +183,7 @@ export default function Pagination() {
                     </DropdownItem>
                   </DropdownMenu>
                 </Dropdown>
-                <Link
+                <a
                   className={buttonStyles({
                     color: "secondary",
                     variant: "ghost",
@@ -207,7 +207,7 @@ export default function Pagination() {
                     <path d="M19 12H5" />
                   </svg>
                   Back
-                </Link>
+                </a>
               </div>
             </div>
           </div>

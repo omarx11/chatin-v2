@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { rateLimiter } from "@/app/lib/rate-limiter";
-import { errorMsg } from "./app/data/errorMsg";
+import { rateLimiter } from "./lib/rate-limiter";
+import { errorMsg } from "./data/errorMsg";
 
 // This function can be marked `async` if using `await` inside
 export async function middleware(req) {

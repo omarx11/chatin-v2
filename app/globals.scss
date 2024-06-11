@@ -2,34 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  color-scheme: light;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-  }
-}
-
 body::-webkit-scrollbar {
   width: 12px;
 }
 body::-webkit-scrollbar-track {
-  background-color: rgb(38 38 38);
+  background-color: #180828;
 }
 body::-webkit-scrollbar-thumb {
   border-radius: 4px;
-  background-color: rgb(91 33 182);
+  background-color: #481878;
   background-clip: content-box;
 }
 body::-webkit-scrollbar-thumb:hover {
-  background-color: rgb(109 40 217);
+  background-color: #6020a0;
 }
 body::-webkit-scrollbar-thumb:active {
-  background-color: rgb(124 58 237);
+  background-color: #7828c8;
 }
 
 @layer utilities {
+  textarea::-webkit-scrollbar {
+    width: 0px;
+  }
+
   .drag-none {
     -webkit-user-drag: none;
     -khtml-user-drag: none;
@@ -82,20 +77,20 @@ body::-webkit-scrollbar-thumb:active {
     width: 10px;
   }
   .msg-scroll::-webkit-scrollbar-track {
-    background-color: rgb(46, 16, 101, 0.6);
+    background-color: #180828;
     border-radius: 4px;
   }
   .msg-scroll::-webkit-scrollbar-thumb {
     border: 2px solid transparent;
     border-radius: 4px;
-    background-color: rgb(76 29 149);
+    background-color: #481878;
     background-clip: content-box;
   }
   .msg-scroll::-webkit-scrollbar-thumb:hover {
-    background-color: rgb(91 33 182);
+    background-color: #6020a0;
   }
   .msg-scroll::-webkit-scrollbar-thumb:active {
-    background-color: rgb(109 40 217);
+    background-color: #7828c8;
   }
 
   .no-scroll-style::-webkit-scrollbar {

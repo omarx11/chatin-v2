@@ -4,13 +4,13 @@
 
 <details> <summary> Play test </summary>
 
-> **Yumiko** introduces herself in English and Arabic ..
+> **Rawan** introduces herself in English and Arabic ..
 
 <audio src="public/static/audio/identify.mov" controls title="Title"></audio>
 
 </details>
 
-Introducing **Yumiko** 🤦🏻 – a character with a bold and sassy personality you can engage with through speech-to-text 🎙️ or text-to-speech. Yumiko generates human-like text based on context, complemented by high-quality spoken audio in any voice, style, or language.
+Introducing **Rawan** 🤦🏻 – a character with a rude personality. You can engage with her through speech-to-text 🎙️ or text-to-speech.
 
 ### Why i build this App?
 
@@ -20,7 +20,7 @@ A great opportunity to enhance my programming skills and this app looks fun anyw
 
 - 🚀 Next.js 14 for full-stack framework JavaScript.
 - 🤖 Integrate Chatbot API with OpenAI.
-- 👄 Yumeko speaks using elevenlabs technology.
+- 👄 Rawan speaks using elevenlabs technology.
 - 🖼️ Chat markdown support: Links and Images.
 - 🎙️ Speech-to-Text Realtime voice cloning.
 - 🌍 Speech transcript supports multiple languages.

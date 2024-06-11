@@ -35,5 +35,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-app/helpers/constants/private-prompt.js
 .vercel

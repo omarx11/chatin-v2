@@ -2,17 +2,22 @@
 
 <img src="public/icon-192x192.png" width="160px" style="border-radius: 6px" alt="">
 
-<details> <summary> Play test </summary>
+Introducing **Yumiko** 🤦🏻 – a character with a bold and sassy personality you can engage with through speech-to-text 🎙️ or text-to-speech. Yumiko generates human-like text based on context, complemented by high-quality spoken audio in any voice, style, or language.
 
-> **Rawan** introduces herself in English and Arabic ..
+<details> <summary> Play </summary>
+<i>
 
-<audio src="public/static/audio/identify.mov" controls title="Title"></audio>
+Yumiko introduces herself in English and Arabic ...
+
+> Don't forget to unmute the player!
+
+</i>
+
+[identify](https://github.com/omarx11/chatin-v2/assets/87499333/9206232f-9840-458c-93e6-036b5244c0dc)
 
 </details>
 
-Introducing **Rawan** 🤦🏻 – a character with a rude personality. You can engage with her through speech-to-text 🎙️ or text-to-speech.
-
-### Why i build this App?
+### Why did I build this App?
 
 A great opportunity to enhance my programming skills and this app looks fun anyway 😂
 
@@ -47,7 +52,11 @@ Here are the technologies and tools I've used to build this App:
 
 ![](public/static/images/github/Screenshot-2.png)
 
+<div align="center">
+
 ![](public/static/images/github/chatin-gif.gif)
+
+</div>
 
 ## 📡 Project Deployment
 
@@ -82,13 +91,13 @@ If you have any questions or feedback, please reach out to me at [discord](https
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!
+Contributions, issues, and feature requests are welcome!
 
 Give a ⭐️ if this project helped you!
 
 ## 🤍 Support me
 
-Your assistance is invaluable in enhancing and maintaining this project. Your support contributes to covering API costs and ensures the continued optimal performance of this app. Thank you sincerely for visiting my GitHub repository 💖.
+I would appreciate your help in enhancing and maintaining this project. Your support contributes to covering API costs and ensures the continued optimal performance of this app. Thank you anyway for visiting my GitHub repository 💖.
 
 [Sponsoring on GitHub](https://github.com/sponsors/omarx11)
 

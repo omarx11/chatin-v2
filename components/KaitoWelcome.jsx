@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useStatementContext } from "../context/StatementProvider";
 import { Button } from "@nextui-org/button";
 
-const RawanWelcome = () => {
+const KaitoWelcome = () => {
   const { isAudioMuted } = useStatementContext();
   const [isAudioStart, setIsAudioStart] = useState(false);
 
@@ -60,7 +60,7 @@ const RawanWelcome = () => {
                 </svg>
               )}
             </Button>
-            Hey. I'm Rawan. What do you want? Why are you even here?
+            Hey. I'm Kaito. What do you want? Why are you even here?
           </p>
         </div>
       </div>
@@ -74,4 +74,4 @@ const RawanWelcome = () => {
   );
 };
 
-export default RawanWelcome;
+export default KaitoWelcome;

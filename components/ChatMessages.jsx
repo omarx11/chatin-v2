@@ -6,7 +6,7 @@ import MarkdownLite from "./MarkdownLite";
 import dynamic from "next/dynamic";
 import { dateStyle } from "../lib/dateFormat";
 import { errorMsg } from "../data/errorMsg";
-import RawanWelcome from "./RawanWelcome";
+import KaitoWelcome from "./KaitoWelcome";
 import { useEffect } from "react";
 
 const ChatMessages = () => {
@@ -72,7 +72,7 @@ const ChatMessages = () => {
           </div>
         );
       })}
-      <RawanWelcome />
+      <KaitoWelcome />
       <p className="border-b-2 border-secondary-700 pb-2 text-center text-sm text-default-200 duration-300">
         Id: {uuidCookie ?? "anonymous"}
       </p>

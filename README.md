@@ -2,7 +2,7 @@
 
 <img src="public/icon-192x192.png" width="160px" style="border-radius: 6px" alt="">
 
-Introducing **Rawan** 🤦🏻 – a character with a rude personality. You can engage with her through speech-to-text 🎙️ or text-to-speech.
+Introducing **Kaito** 🤦🏻 – a character with a rude personality. You can engage with him through speech-to-text 🎙️ or text-to-speech.
 
 <details> <summary> Play </summary>
 <i>
@@ -23,7 +23,7 @@ A great opportunity to enhance my programming skills and this app looks fun anyw
 
 - 🚀 Next.js 14 for full-stack framework JavaScript.
 - 🤖 Integrate Chatbot API with OpenAI.
-- 👄 Rawan speaks using elevenlabs technology.
+- 👄 Kaito speaks using elevenlabs technology.
 - 🖼️ Chat markdown support: Links and Images.
 - 🎙️ Speech-to-Text Realtime voice cloning.
 - 🌍 Speech transcript supports multiple languages.

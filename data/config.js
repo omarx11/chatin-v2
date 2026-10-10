@@ -4,7 +4,7 @@ export const meta = {
   title: "Chatin",
   description: "Chatin App",
   descriptionFull:
-    "Talk to Rawan voice-to-voice using speech recognition or text-to-speech.",
+    "Talk to Kaito voice-to-voice using speech recognition or text-to-speech.",
   keywords: [
     "Chitin",
     "ChatGPT AI",

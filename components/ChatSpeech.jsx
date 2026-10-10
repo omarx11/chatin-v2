@@ -28,7 +28,7 @@ const ChatSpeech = () => {
     new Set([defaultLang]),
   );
   const [selectedVoise, setSelectedVoise] = useState(new Set([defaultVoise]));
-  const [voiseName, setVoiseName] = useState("Rawan");
+  const [voiseName, setVoiseName] = useState("Kaito");
   const [languageName, setLanguageName] = useState("English (US)");
   const [subscriptionInfo, setSubscriptionInfo] = useState(null);
   const [mutationIsDone, setMutationIsDone] = useState(false);
@@ -267,7 +267,7 @@ const ChatSpeech = () => {
   useEffect(() => {
     const voiseId = selectedVoise?.currentKey ?? defaultVoise;
     const voises = {
-      AZnzlk1XvdvUeBnXmlld: "Rawan",
+      AZnzlk1XvdvUeBnXmlld: "Kaito",
       EXAVITQu4vr4xnSDxMaL: "Bella",
       g5CIjZEefAph4nQFvHAz: "Ethan",
       MF3mGyEYCl7XYWbV9V6O: "Elli",
@@ -396,7 +396,7 @@ const ChatSpeech = () => {
                     key="AZnzlk1XvdvUeBnXmlld"
                     description="Default voise line"
                   >
-                    Rawan
+                    Kaito
                   </DropdownItem>
                   <DropdownItem
                     key="EXAVITQu4vr4xnSDxMaL"

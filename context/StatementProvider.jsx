@@ -12,7 +12,7 @@ export function StatementProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isAudioMuted, setIsAudioMuted] = useState(false);
   const [aiVoiseId, setAiVoiseId] = useState("AZnzlk1XvdvUeBnXmlld");
-  const [aiVoiseName, setAiVoiseName] = useState("rawan");
+  const [aiVoiseName, setAiVoiseName] = useState("kaito");
   const [uuidCookie, setUuidCookie] = useState(getCookie("uuid"));
 
   // set uuid cookie to the user

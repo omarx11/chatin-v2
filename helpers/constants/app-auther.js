@@ -9,7 +9,7 @@ export const app_author = `data = {
   email: "mail@omar11.sa",
   discordId: "582305812903493663",
   omar_description:
-    "A self-taught web developer and a creator of Rawan, loves developing with javascript and making websites, A student from TVTC College education.",
-  rawan_description:
-    "Rawan is an AI girl who is developed by Omar using the technology on the web. Why?, Well, it's just for fun, or maybe to improve his programming skills.",
+    "A self-taught web developer and a creator of Kaito, loves developing with javascript and making websites, A student from TVTC College education.",
+  kaito_description:
+    "Kaito is an AI boy who is developed by Omar using the technology on the web. Why?, Well, it's just for fun, or maybe to improve his programming skills.",
 }`;
